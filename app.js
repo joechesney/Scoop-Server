@@ -41,6 +41,37 @@ const app = express();
 
 */
 
+/*
+
+  1. Need a module that gets the product ids of each item that i follow
+      - from: "https://reverb.com/my/feed/customize"
+  2. Need a module that retrieves the average sale prices for each of those items
+      - from: https://reverb.com/price-guide/guide/8799-electro-harmonix-little-big-muff-pi
+      - the items id number and name is in the the end of that url
+  3. Need a module that retrieves the top 5 (lowest price) listings for each item
+      - from: https://reverb.com/p/electro-harmonix-little-big-muff-reissue
+      - only the item name is listed in this url
+  4. Need a module that takes the price data from both of those urls
+      and compares it to decide whether it is a good deal. 
+        - maybe 10-15% under the average price?
+        - this module iwll return a list of good deals? 
+
+*/
+
+/*
+  I should be able to save price data for specific items only once
+  If i save the item as having the id of the item itself on reverb, 
+  then there should never be duplicate items, and each time i grab
+  average price data for that item, I can check the database for an
+  item with that same id, and if its exists, then update its price 
+  values.
+
+  Each listing will have a unique listing id that i can use to store 
+  them so they have unique rows, and the listings will have a product
+  id that they reference
+
+*/
+
 app.get('/scrape', function (req, res) {
   var options = {
     url: 'https://reverb.com/price-guide/guide/8799-electro-harmonix-little-big-muff-pi',
