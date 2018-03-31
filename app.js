@@ -58,6 +58,20 @@ const app = express();
 
 */
 
+/*
+  I should be able to save price data for specific items only once
+  If i save the item as having the id of the item itself on reverb, 
+  then there should never be duplicate items, and each time i grab
+  average price data for that item, I can check the database for an
+  item with that same id, and if its exists, then update its price 
+  values.
+
+  Each listing will have a unique listing id that i can use to store 
+  them so they have unique rows, and the listings will have a product
+  id that they reference
+
+*/
+
 app.get('/scrape', function (req, res) {
   var options = {
     url: 'https://reverb.com/price-guide/guide/8799-electro-harmonix-little-big-muff-pi',
