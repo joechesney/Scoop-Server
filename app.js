@@ -72,6 +72,8 @@ const app = express();
 
 */
 
+// TODO: Decide if I should store price values as strings of integers
+
 app.get('/scrape', function (req, res) {
   var options = {
     url: 'https://reverb.com/price-guide/guide/8799-electro-harmonix-little-big-muff-pi',
