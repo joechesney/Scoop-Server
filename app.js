@@ -1,15 +1,13 @@
 const express = require('express');
-const fs = require('fs');
-const request = require('request');
-const cheerio = require('cheerio');
 const app = express();
 const router = express.Router();
+const bodyParser = require('body-parser');
+
 require('dotenv').config();
 
-const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
-const routes = require('./Backend/router');
+const routes = require('./Backend/routes/index');
 
 app.use('/scoop/', routes);
 

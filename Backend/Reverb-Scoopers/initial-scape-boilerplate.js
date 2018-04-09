@@ -1,3 +1,6 @@
+const fs = require('fs');
+const request = require('request');
+const cheerio = require('cheerio');
 
 app.get('/scrape', function (req, res) {
   var options = {
