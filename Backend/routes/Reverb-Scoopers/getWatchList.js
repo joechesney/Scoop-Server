@@ -1,4 +1,5 @@
-
+const { Router } = require('express');
+const watchlistRouter = Router();
 // This file will mainly contain a function to grab the 
 // watched items ids and names from the url "https://reverb.com/my/feed/customize"
 
@@ -8,9 +9,9 @@ const fs = require('fs');
 const request = require('request');
 const cheerio = require('cheerio');
 
-app.get('/watchlist', function (req, res) {
+watchlistRouter.get('/', function (req, res) {
   var options = {
-    url: 'https://reverb.com/my/feed/customize',
+    url: 'https://reverb.com/price-guide/guide/8799-electro-harmonix-little-big-muff-pi',
     headers: {
       'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/600.1.3 (KHTML, like Gecko) Version/8.0 Mobile/12A4345d Safari/600.1.4'
     }
@@ -35,8 +36,8 @@ app.get('/watchlist', function (req, res) {
       // Gets Average Low and High Prices
       $('.inline-list.prices').filter(function(){
         var data = $(this);
-        product.averageLow = data.children('.strong').children().first().text().replace("$", "");
-        product.averageHigh = data.children('.strong').children().last().text().replace("$", "");
+        product.averageLow = +data.children('.strong').children().first().text().replace("$", "");
+        product.averageHigh = +data.children('.strong').children().last().text().replace("$", "");
         product.averagePrice = ((+product.averageHigh+(+product.averageLow))/2);
       });
 
@@ -62,4 +63,4 @@ app.get('/watchlist', function (req, res) {
   }
 });
 
-exports = module.exports = wishlist;
+exports = module.exports = watchlistRouter;
