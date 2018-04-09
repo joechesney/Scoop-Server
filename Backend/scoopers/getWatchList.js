@@ -4,11 +4,10 @@
 
 // it will get this data and send it to the 'getPrices' module
 
-const express = require('express');
 const fs = require('fs');
 const request = require('request');
 const cheerio = require('cheerio');
-const app = express();
+
 
 /*
   1. Needs to go to 'My Feed/customize' Page. This page has an anchor 
@@ -64,9 +63,9 @@ const app = express();
 
 */
 
-app.get('/wishlist', function (req, res) {
+app.get('/watchlist', function (req, res) {
   var options = {
-    url: 'https://reverb.com/price-guide/guide/8799-electro-harmonix-little-big-muff-pi',
+    url: 'https://reverb.com/my/feed/customize',
     headers: {
       'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/600.1.3 (KHTML, like Gecko) Version/8.0 Mobile/12A4345d Safari/600.1.4'
     }
