@@ -80,7 +80,7 @@ app.use('/scoop/', routes);
 */
 
 // TODO: Decide if I should store price values as strings of integers
-app.use(require('Backend'));
+
 
 app.use((err, req, res, next ) => {
   err = err || new Error("Internal Server Error");
