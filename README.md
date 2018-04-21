@@ -1,5 +1,6 @@
 # Scoop
 This is my Final Capstone Project for Nashville Software School. It is due May 18th, 2018, so it will not be completed until around that time. I will slowly be pushing up new updates to this project. 
+I plan to use NodeJS and React.
 
 ## Goals:
 1. Build a webscraper using NodeJS to pull price data off of a popular used music gear website. 
