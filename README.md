@@ -1,4 +1,5 @@
 # Scoop
+
 This is my Final Capstone Project for Nashville Software School. It is due May 18th, 2018, so it will not be completed until around that time. I will slowly be pushing up new updates to this project. 
 I plan to use NodeJS and React.
 
@@ -14,3 +15,4 @@ I plan to use NodeJS and React.
 ## Post-mvp:
 1. A "feed" page that lists all of the best deals for all the watched items the user has, sorted in order by the best deal available. There can be multiple product blocks for each watchlist item on this page. 
 2. User settings where they can change which "page" displays upon opening the app. 
+
