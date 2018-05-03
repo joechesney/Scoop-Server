@@ -1,6 +1,6 @@
 "use strict"
 const request = require('request');
-const secrets = require('../../helpers/secrets');
+const secrets = require('./secrets');
 
 // get the authorization token
 // add auth token to the header options object
