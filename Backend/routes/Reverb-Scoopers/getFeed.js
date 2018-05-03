@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const watchlistRouter = Router();
+const feedRouter = Router();
 // This file will mainly contain a function to grab the
 // watched items ids and names from the url "https://reverb.com/my/feed/customize"
 
@@ -9,8 +9,9 @@ const fs = require('fs');
 const request = require('request');
 const cheerio = require('cheerio');
 
-watchlistRouter.get('/', function (req, res) {
-
+feedRouter.get('/', function (req, res) {
+  // get req.body and it should have some data on it from the front end maybe?
+  console.log('req.body',req.body);
 });
 
-exports = module.exports = watchlistRouter;
+exports = module.exports = feedRouter;
