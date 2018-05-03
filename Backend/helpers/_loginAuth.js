@@ -25,7 +25,6 @@ module.exports = () =>{
     };
 
     request(options, (error, response, html)=>{
-      console.log('loginAuth error: ',error);
       if (!error && response.statusCode == 200) {
         let bodyObj = JSON.parse(response.body);
         resolve(bodyObj);
