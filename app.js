@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 
 const routes = require('./Backend/routes/index');
 
-app.use('/scoop/', routes);
+app.use('/scoop', routes);
 
 /*
   1. Needs to go to 'My Feed/customize' Page. This page has an anchor 
@@ -79,7 +79,6 @@ app.use('/scoop/', routes);
 
 */
 
-// TODO: Decide if I should store price values as strings of integers
 
 
 app.use((err, req, res, next ) => {
@@ -88,6 +87,6 @@ app.use((err, req, res, next ) => {
   res.json({ error: err.message });
 });
 const port = process.env.PORT || 8080;
-app.listen(port, ()=>console.log('Magic happens on port 3300'));
+app.listen(port, ()=>console.log('Listening on port 3300 or 8080'));
 
 exports = module.exports = app;
