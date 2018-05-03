@@ -6,8 +6,7 @@ const feedRouter = Router();
 
 const fs = require('fs');
 const request = require('request');
-const cheerio = require('cheerio');
-const loginAuth = require("./_login");
+const { loginAuth } = require("../../helpers/_login");
 
 
 feedRouter.get('/', function (req, res) {
