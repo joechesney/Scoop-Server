@@ -1,12 +1,13 @@
 "use strict";
 
 const { Router } = require('express');
-const productsIndexRouter = Router();
+const indexRouter = Router();
 
-productsIndexRouter.use('/login', require('./login'));
+indexRouter.use('/login', require('./login'));
 
-productsIndexRouter.use('/watchlist', require('./getWatchlist'));
-// productsIndexRouter.use('/listings', require('./getListings'));
-// productsIndexRouter.use('/prices', require('./getPrices'));
+indexRouter.use('/feed', require('./getFeed'));
+indexRouter.use('/watchlist', require('./getWatchlist'));
+// indexRouter.use('/listings', require('./getListings'));
+// indexRouter.use('/prices', require('./getPrices'));
 
-module.exports = productsIndexRouter;
+module.exports = indexRouter;
