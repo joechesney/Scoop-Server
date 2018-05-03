@@ -4,19 +4,21 @@ const watchlistRouter = Router();
 // watched items ids and names from the url "https://reverb.com/my/feed/customize"
 
 // "/mywatchlist"
-
 const fs = require('fs');
 const request = require('request');
 const cheerio = require('cheerio');
-const { loginAuth, getAPIData } = require("../../helpers/");
+const { loginAuth, getAPIData } = require("../../helpers/index.js");
 
 watchlistRouter.get('/', function (req, res) {
   // call the login function and it will send back the auth token
   loginAuth().
   then(token=>{
-
-    res.send(getAPIData(token.access_token, "/wants"));
-
+    return getAPIData(token.access_token, "/wants");
+  })
+  .then(dataFromAPI=>{
+    res.send(dataFromAPI);
+  })
+  .catch(error=>{if(error){console.log('execution error: ',error);}
   })
 });
 
