@@ -1,15 +1,12 @@
-const { Router } = require('express');
-const feedRouter = Router();
-
-// "/myfeed"
-const fs = require('fs');
+const feedRouter = require('express').Router();
 const request = require('request');
 const { loginAuth, getAPIData } = require("../../helpers/");
 
 
+// "/myfeed"
 feedRouter.get('/', function (req, res) {
   // call the login function and it will send back the auth token
-
+  // then send the auth token in the header of the GET request
   loginAuth().
   then(token=>{
     return getAPIData(token.access_token, "/my/feed");
