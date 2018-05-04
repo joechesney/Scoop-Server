@@ -5,20 +5,15 @@ module.exports = (productUrl) => {
   var options = {
     url: `${productUrl}`,
     headers: {
-      'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/600.1.3 (KHTML, like Gecko) Version/8.0 Mobile/12A4345d Safari/600.1.4'
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36'
     }
   };
   try {
   request(options, function (error, response, html) {
-    console.log('error: ',error);
-    console.log('html: ',html);
     if (!error) {
 
       const $ = cheerio.load(html);
-      // console.log('html:',html);
-      let name, averageLow, averageHigh;
-      // Finally, we'll define the variables we're going to capture
-      let product = { name: "", averageLow: "", averageHigh: "" };
+      // console.log('html: ',html);
 
       $('.heading-1').filter(function(){
         var data = $(this);
@@ -53,4 +48,4 @@ module.exports = (productUrl) => {
   } catch (error) {
       console.log('error:',error);
   }
-});
+};
