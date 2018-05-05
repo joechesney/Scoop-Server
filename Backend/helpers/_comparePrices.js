@@ -1,11 +1,35 @@
 
-const cheerio = require('cheerio');
-// This will take a look at the database and compare the average price of an item
-// to the listed prices for currently low priced listings
+// This function is used by the getSingleProduct function to
+module.exports = (productObj) => {
+  // I made this a promise because I was hitting a race conidition without it
+  return new Promise((resolve, reject)=>{
+    if(productObj._embedded !== undefined){
+      let isGoodDeal;
+      let avgMarketPrice = ((productObj._embedded.price_guide.estimated_value.bottom_price + productObj._embedded.price_guide.estimated_value.top_price) /2);
 
-module.exports = (html) => {
-  // this will receive the whole html object and look at the
-  // product price and the price-guide price and compare them
+      let productPrice = +productObj.price.amount;
+      let percentOfMarketPrice = 100 * (+productPrice/avgMarketPrice);
+      let percentBelowMarketPrice = ((avgMarketPrice-productPrice)/(avgMarketPrice));
 
-  // it will return a true or false value
+      if(productPrice < avgMarketPrice){
+        isGoodDeal = true;
+      }else{
+        isGoodDeal = false;
+      }
+
+      let dealInfo = {
+        percentOfMarketPrice,
+        percentBelowMarketPrice,
+        avgMarketPrice,
+        isGoodDeal,
+      }
+      productObj.SCOOP = dealInfo;
+
+      resolve(productObj);
+
+    } else if(productObj._embedded == undefined){
+      resolve(productObj);
+    } else { reject(new Error("no embedded price guide info bro"))}
+
+  })
 }

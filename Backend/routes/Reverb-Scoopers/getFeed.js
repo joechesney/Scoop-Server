@@ -1,20 +1,29 @@
 const feedRouter = require('express').Router();
 const request = require('request');
-const { loginAuth, getAPIData } = require("../../helpers/");
+const { loginAuth, getProductsList, comparePrices, getSingleProduct } = require("../../helpers/");
 
 
 // "/myfeed"
-feedRouter.get('/', function (req, res) {
+feedRouter.get('/', function (req, res, next) {
   // call the login function and it will send back the auth token
   // then send the auth token in the header of the GET request
   loginAuth().
   then(token=>{
-    return getAPIData(token.access_token, "/my/feed");
+    getProductsList(token.access_token, "/api/my/feed")
+    .then(dataFromAPI=>{
+      let promiseArray = [];
+      for(let i = 0; i < dataFromAPI.listings.length; i++){
+        promiseArray.push(getSingleProduct(token.access_token, dataFromAPI.listings[i]._links.self.href));
+      }
+
+      Promise.all(promiseArray).then(listings=>{
+        if(listings){
+          res.send(listings);
+        }
+      })
+    })
   })
-  .then(dataFromAPI=>{
-    res.send(dataFromAPI);
-  })
-  .catch(error=>{if(error){console.log('execution error: ',error);}
+  .catch(error=>{if(error){next(error);}
   })
 });
 

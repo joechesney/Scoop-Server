@@ -5,7 +5,7 @@ module.exports = (access_token, urlSuffix) => {
   return new Promise((resolve, reject) => {
 
     let options = {
-      url: `https://reverb.com/api${urlSuffix}`,
+      url: `https://reverb.com${urlSuffix}`,
       headers: {
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36',
         'Authorization': `Bearer ${access_token}`
@@ -15,7 +15,7 @@ module.exports = (access_token, urlSuffix) => {
       "Accept-Version": "3.0",
     }
     request(options, (error, response, html) => {
-      if (!error) {
+      if (!error && response) {
         response = JSON.parse(response.body); //THIS WORKS!
         resolve(response);
       } else {
