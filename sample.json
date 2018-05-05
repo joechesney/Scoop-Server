@@ -1,0 +1,150 @@
+{ id: 11112303,
+  make: 'Electro-Harmonix',
+  model: 'Q-Tron+',
+  finish: '',
+  year: '',
+  title: 'Electro-Harmonix Q-Tron+',
+  created_at: '2018-03-29T17: 41: 50-05: 00',
+  shop_name: 'Garrett Park Guitars',
+  description: '<p>For your consideration, Garrett Park Guitars presents this Electro-Harmonix Q-Tron Plus Envelope Follower.</p>\n<p><span>Same design as the original Q-Tron but with extremely useful Effects Loop and an Attack Response Switch.</span></p>\n<p>The Effects Loop gives the musician the ability to place an additional effect, or chain of effects between the Q-Tron Plus\'s preamp and filter section without changing the envelope drive. This is particularly important with most distortion devices, as most all do not have much of an amplitude envelope. The FX loop will also fire up your creative juices to try all sorts of combinations in the effects loop: try the Micro POG into a Deluxe Memory Man. You can invent all sorts of novel effects.</p>\n<p>The added Response Switch selects between a slow, smooth, vowel-like attack and the fast, snaked response of the original Q-Tron.</p>\n<p> </p>',
+  condition: 'Brand New',
+  condition_uuid: '7c3f45de-2ae0-4c81-8400-fdb6b1d74890',
+  condition_slug: 'brand-new',
+  price: { amount: '167.60',
+     amount_cents: 16760,
+     currency: 'USD',
+     symbol: '$',
+     display: '$167.60'
+  },
+  inventory: 1,
+  has_inventory: true,
+  offers_enabled: false,
+  auction: false,
+  category_uuids: [ 'a92165b2-2281-4dc2-850f-2789f513ec10'
+  ],
+  listing_currency: 'USD',
+  published_at: '2018-05-03T16: 16: 54-05: 00',
+  sku: 'Q-TRON+',
+  state: { slug: 'live', description: 'Live'
+  },
+  wanted: false,
+  accepted_payment_methods: [ 'direct_checkout', 'paypal', 'affirm'
+  ],
+  location: { region: 'MD',
+     locality: 'Annapolis',
+     country_code: 'US',
+     display_location: 'Annapolis, MD, United States'
+  },
+  draft: false,
+  live: true,
+  local_pickup_only: false,
+  cloudinary_photos: [
+    { id: 31479776,
+       public_id: 'ipf14dti34sx0ml2byut',
+       version: '1522363311',
+       format: 'jpg',
+       resource_type: 'image',
+       transformation: null,
+       path: 'v1522363311/ipf14dti34sx0ml2byut.jpg',
+       preview_url: 'https: //images.reverb.com/image/upload/s--MpPg9y1o--/v1522363311/ipf14dti34sx0ml2byut.jpg' } ],
+  shop: { feedback_count: 267,
+     preferred_seller: true,
+     rating_percentage: 0.994736842105263
+      },
+  stats: { views: 23, watches: 0
+      },
+  offer_count: 0,
+  shipping_policy: 'I will ship with tracking to the listed regions. To negotiate shipping rates to other locations, please send me a message.',
+  payment_policy: 'We accept Visa, Mastercard and Discover cards, checks, money orders, wire transfers and (of course) cash. We also offer layway (25% down/60 days) and financing with approval.',
+  has_offer_for_buyer: false,
+  product_type: 'effects-and-pedals',
+  sold_as_is: false,
+  upc_does_not_apply: false,
+  return_policy: { description: 'This product can be returned within 2 days of receipt.'
+      },
+  videos: [],
+  is_my_listing: false,
+  photos: [
+        { _links: [Object
+          ]
+        }
+      ],
+  shipping: { local: true,
+     us: true,
+     us_rate: { amount: '5.99',
+        amount_cents: 599,
+        currency: 'USD',
+        symbol: '$',
+        display: '$5.99'
+        },
+     rates: [
+          [Object
+          ]
+        ],
+     user_region_rate: { region_code: 'US_CON', rate: [Object
+          ]
+        },
+     initial_offer_rate: { region_code: 'US_CON', rate: [Object
+          ]
+        },
+     free_expedited_shipping: false
+      },
+  lists: [
+        { name: 'Watching',
+       description: 'Get notified when the price drops',
+       type: 'watchlist',
+       is_in_list: false,
+       _links: [Object
+          ]
+        },
+        { name: 'Wish List',
+       description: 'For sharing with friends and family',
+       type: 'wishlist',
+       is_in_list: false,
+       _links: [Object
+          ]
+        }
+      ],
+  _links: { photo: { href: 'https: //images.reverb.com/image/upload/s--qIYMoPi4--/a_exif,c_thumb,f_auto,fl_progressive,g_south,h_640,q_auto:eco,w_640/v1522363311/ipf14dti34sx0ml2byut.jpg' },
+     self: { href: '/api/listings/11112303-electro-harmonix-q-tron'
+          },
+     update: { method: 'PUT',
+        href: '/api/listings/11112303-electro-harmonix-q-tron'
+          },
+     end: { method: 'PUT',
+        href: '/api/my/listings/11112303-electro-harmonix-q-tron/state/end'
+          },
+     want: { method: 'PUT',
+        href: '/api/wants/11112303-electro-harmonix-q-tron'
+          },
+     unwant: { method: 'DELETE',
+        href: '/api/wants/11112303-electro-harmonix-q-tron'
+          },
+     edit: { href: '/api/listings/11112303-electro-harmonix-q-tron/edit'
+          },
+     web: { href: 'https: //reverb.com/item/11112303-electro-harmonix-q-tron' },
+     add_to_wishlist: { method: 'POST',
+        href: '/api/my/wishlist/11112303-electro-harmonix-q-tron'
+            },
+     remove_from_wishlist: { method: 'DELETE',
+        href: '/api/my/wishlist/11112303-electro-harmonix-q-tron'
+            },
+     cart: { href: '/api/cart/11112303'
+            },
+     buy: { href: 'https: //reverb.com/cart/add?cart_item%5Baction_source_attributes%5D%5Bdevice%5D=&cart_item%5Bproduct_id%5D=11112303&token=56b64c5efae830168f0f9455b4dc916e192a5338ac756d67371b7ff7258922b1' },
+     flag: { href: '/api/listings/11112303-electro-harmonix-q-tron/flag'
+              },
+     contact_seller: { web: [Object
+                ]
+              },
+     conversations: { href: '/api/listings/11112303/conversations'
+              },
+     shop: { href: '/api/shops/garrettparkguitars', web: [Object
+                ]
+              },
+     comparison_shopping: { href: '/api/comparison_shopping/electro-harmonix-q-tron-plus-envelope-filter'
+              },
+     sales: { href: '/api/listings/11112303/sales'
+              }
+            }
+          }
