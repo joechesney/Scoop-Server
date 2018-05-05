@@ -12,8 +12,7 @@ feedRouter.get('/', function (req, res, next) {
     getProductsList(token.access_token, "/api/my/feed")
     .then(dataFromAPI=>{
       let promiseArray = [];
-      for(let i = 12; i < 13; i++){
-        console.log('i: ',i);
+      for(let i = 0; i < dataFromAPI.listings.length; i++){
         promiseArray.push(getSingleProduct(token.access_token, dataFromAPI.listings[i]._links.self.href));
       }
 
