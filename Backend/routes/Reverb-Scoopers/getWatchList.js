@@ -1,6 +1,5 @@
 const watchlistRouter = require('express').Router();
-const request = require('request');
-const { loginAuth, getAPIData } = require("../../helpers/index.js");
+const { loginAuth, getProductsList } = require("../../helpers/index.js");
 
 // "/mywatchlist"
 watchlistRouter.get('/', function (req, res) {
@@ -9,7 +8,7 @@ watchlistRouter.get('/', function (req, res) {
 
   loginAuth().
   then(token=>{
-    return getAPIData(token.access_token, "/wants");
+    return getProductsList(token.access_token, "/api/wants");
   })
   .then(dataFromAPI=>{
 
@@ -21,7 +20,6 @@ watchlistRouter.get('/', function (req, res) {
       the next link is on the obj that comes back from the above link (comparison_shopping)
       productObj._links.web.used_listings
       productObj._links.web.new_listings
-
 
 
       *** PRICE COMPARISONS ***
@@ -45,7 +43,7 @@ watchlistRouter.get('/', function (req, res) {
       these are both integers already
 
     */
-    res.send(dataFromAPI);
+    res.send(dataFromAPI.listings[0]);
   })
   .catch(error=>{if(error){console.log('execution error: ',error);}
   })

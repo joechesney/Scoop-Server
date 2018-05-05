@@ -1,8 +1,12 @@
 
-getAPIData= require('./_getAPIData');
-loginAuth= require('./_loginAuth');
+getProductsList = require('./_getProductsList');
+getSingleProduct = require('./_getSingleProduct');
+loginAuth = require('./_loginAuth');
+comparePrices = require('./_comparePrices');
 
 module.exports={
-  getAPIData,
-  loginAuth
+  getProductsList,
+  getSingleProduct,
+  loginAuth,
+  comparePrices,
 }
