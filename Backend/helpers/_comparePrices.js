@@ -7,9 +7,13 @@ module.exports = (productObj) => {
       let isGoodDeal;
       let avgMarketPrice = ((productObj._embedded.price_guide.estimated_value.bottom_price + productObj._embedded.price_guide.estimated_value.top_price) /2);
 
-      let productPrice = +productObj.price.amount;
-      let percentOfMarketPrice = 100 * (+productPrice/avgMarketPrice);
-      let percentBelowMarketPrice = ((avgMarketPrice-productPrice)/(avgMarketPrice));
+      let productPrice = (+productObj.price.amount) ;
+      let percentOfMarketPrice = 100 * (+productPrice/avgMarketPrice).toFixed(2);
+
+
+      let decimalBelowMarketPrice = ((avgMarketPrice-productPrice)/(avgMarketPrice)).toFixed(2);
+      let percentBelowMarketPrice = decimalBelowMarketPrice * 100;
+
 
       if(productPrice < avgMarketPrice){
         isGoodDeal = true;
