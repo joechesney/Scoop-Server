@@ -26,15 +26,14 @@ class Container extends React.Component {
     return (
       <Card.Group>
         {
-          this.state.products.filter(product=>product.SCOOP !== undefined).map((product)=>{
-            return (
+          this.state.products.filter(product=>product.SCOOP !== undefined).map((product)=>(
               <span key={product.id}>
                 <ProductCard
                   card={product}
                   />
               </span>
             )
-          })
+          )
         }
       </Card.Group>
     )

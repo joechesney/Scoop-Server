@@ -19,7 +19,7 @@ const ProductCard = props => (
       </Card.Description>
     </Card.Content>
     <Card.Content extra>
-      <a>
+
         <Icon name='user' />
 
         {
@@ -28,7 +28,7 @@ const ProductCard = props => (
           : `0% below market price`
           }
 
-      </a>
+
     </Card.Content>
   </Card>
   </a>
