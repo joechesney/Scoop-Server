@@ -28,5 +28,8 @@
 }
 
 .scoopPrice {
-  color: green;
+  color: limegreen;
+}
+.notScoopPrice {
+  color: red;
 }
