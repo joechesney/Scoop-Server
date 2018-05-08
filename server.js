@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const router = express.Router();
 const bodyParser = require('body-parser');
+const cors = require('cors');
+app.use(cors());
 
 require('dotenv').config();
 
@@ -87,6 +89,6 @@ app.use((err, req, res, next ) => {
   res.json({ error: err.message });
 });
 const port = process.env.PORT || 8080;
-app.listen(port, ()=>console.log('Listening on port 3300 or 8080'));
+app.listen(port, ()=>console.log('Listening on port 3333 or 8080'));
 
 exports = module.exports = app;

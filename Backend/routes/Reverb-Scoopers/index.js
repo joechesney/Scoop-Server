@@ -3,7 +3,7 @@
 const { Router } = require('express');
 const indexRouter = Router();
 
-indexRouter.use('/myfeed', require('./getFeed'));
-indexRouter.use('/mywatchlist', require('./getWatchlist'));
+indexRouter.use('/myfeed', require('./getFeedB'));
+indexRouter.use('/mywatchlist', require('./getWatchlistB'));
 
 module.exports = indexRouter;
