@@ -23,7 +23,7 @@ const ProductCard = props => (
         <Icon name='user' />
 
         {
-          props.card.SCOOP.percentOfMarketPrice < 100
+          (props.card.SCOOP)&&(props.card.SCOOP.percentOfMarketPrice < 100)
           ? `${props.card.SCOOP.percentBelowMarketPrice} % below market price`
           : `0% below market price`
           }
