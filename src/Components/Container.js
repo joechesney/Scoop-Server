@@ -26,7 +26,7 @@ class Container extends React.Component {
     return (
       <Card.Group>
         {
-          this.state.products.map((product)=>{
+          this.state.products.filter(product=>product.SCOOP !== undefined).map((product)=>{
             return (
               <span key={product.id}>
                 <ProductCard
