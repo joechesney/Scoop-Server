@@ -22,11 +22,16 @@ const ProductCard = props => {
       </Card.Description>
     </Card.Content>
     <Card.Content extra>
+      <div>This Price: ${props.card.price.amount}</div>
+      <div>Avg. Price: ${props.card.SCOOP.avgMarketPrice.toFixed(2)}</div>
+
+    </Card.Content>
+    <Card.Content extra>
       <Icon name='dollar' />
         {
           (props.card.SCOOP)&&(props.card.SCOOP.percentOfMarketPrice < 100)
-          ? `${props.card.SCOOP.percentBelowMarketPrice} % below market price`
-          : `0% below market price`
+          ? <span className="scoopPrice">${props.card.SCOOP.percentBelowMarketPrice} % below market price</span>
+          : <span className="NotScoopPrice">${props.card.SCOOP.percentOfMarketPrice - 100}% above market price</span>
         }
     </Card.Content>
   </Card>

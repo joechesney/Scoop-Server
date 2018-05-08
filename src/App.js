@@ -14,7 +14,6 @@ class App extends Component {
   }
 
   render() {
-    console.log('products: ',this.state.products);
     return (
       <div >
         <Navbar />
