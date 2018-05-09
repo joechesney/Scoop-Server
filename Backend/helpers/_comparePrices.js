@@ -31,9 +31,27 @@ module.exports = (productObj) => {
 
       resolve(productObj);
 
-    } else if(productObj._embedded == undefined){
+    } else if((productObj._embedded == undefined) && (productObj._links.comparison_shopping)){
+      // These products do not have the convenient embedded data,
+      // but i cna send a get request to the appi endpoint on
+      // comparison_shopping and see what it has
+
+      // productObj.SCOOP.comparison_shopping.href = productObj._links.comparison_shopping.href;
+      // console.log('Has comparison URL:',productObj.model);
       resolve(productObj);
-    } else { reject(new Error("no embedded price guide info bro"))}
+    } else if((productObj._embedded == undefined) && (!productObj._links.comparison_shopping)){
+      // these products have no useful data at all.
+      // i might be able to look through their links to
+      // try to find something i compare it to, but most
+      // likely i will just display these with a message like
+      // "No average price data for this product"
+      console.log('no embedded or comparison shopping url',productObj.model);
+      resolve(productObj)
+
+    } else {
+      console.log('WTFFFFFFFFF',productObj);
+      reject(new Error("no embedded price guide info bro"))
+    }
 
   })
 }
