@@ -35,9 +35,9 @@ module.exports = (productObj) => {
       // These products do not have the convenient embedded data,
       // but i cna send a get request to the appi endpoint on
       // comparison_shopping and see what it has
-
-      // productObj.SCOOP.comparison_shopping.href = productObj._links.comparison_shopping.href;
-      // console.log('Has comparison URL:',productObj.model);
+      let compUrl = productObj._links.comparison_shopping.href;
+      productObj.SCOOP = compUrl;
+      console.log('Has comparison URL:',productObj._links.comparison_shopping);
       resolve(productObj);
     } else if((productObj._embedded == undefined) && (!productObj._links.comparison_shopping)){
       // these products have no useful data at all.
