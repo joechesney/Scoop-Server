@@ -19,7 +19,6 @@ class App extends Component {
       <Router>
         <div>
           <Navbar />
-
           <Route path="/myfeed" render={()=><Container endpoint={"http://localhost:3333/scoop/myfeed"}/>} />
           <Route path="/mywatchlist" render={()=><Container endpoint={"http://localhost:3333/scoop/mywatchlist"}/>} />
         </div>
