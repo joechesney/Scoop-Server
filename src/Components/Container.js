@@ -8,13 +8,15 @@ class Container extends React.Component {
     super(props);
     this.state = {
       products: [],
+      endpoint: props.endpoint
     }
+
   }
 
   componentDidMount() {
-    axios.get("http://localhost:3333/scoop/myfeed")
+    axios.get(this.state.endpoint)
     .then(response=>{
-      console.log('SWEET MOTHERFUCKIN DATA',response.data);
+      console.log('SWEET SWEET DATA',response.data);
       this.setState(prevState=> {
         return {
           products: response.data
