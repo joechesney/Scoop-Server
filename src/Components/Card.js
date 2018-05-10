@@ -3,6 +3,38 @@ import { Card, Icon, Image } from 'semantic-ui-react'
 
 const ProductCard = props => {
   const dateOfPublication = new Date(props.card.created_at).toLocaleString();
+  const prices = props.card.SCOOP.hasPriceGuide === true
+    ? (
+        <Card.Content extra>
+          <div>
+            This Price: ${props.card.price.amount} + {props.card.shipping.rates[0].rate.display} shipping
+          </div>
+          <div>Avg. Price: ${props.card.SCOOP.avgMarketPrice.toFixed(2)}</div>
+        </Card.Content>
+    )
+    :
+
+    (
+      <Card.Content extra>
+        <div>
+          This Price: ${props.card.price.amount} + {props.card.shipping.rates[0].rate.display} shipping
+        </div>
+        <div>Lowest Available Price: ${props.card.SCOOP.lowestAvailable}</div>
+      </Card.Content>
+    );
+    // :
+    // (
+    //   <Card.Content extra>
+    //     <div>
+    //       This Price: ${props.card.price.amount} + {props.card.shipping.rates[0].rate.display} shipping
+    //     </div>
+    //     {/* <div>Avg. Price: ${props.card.SCOOP.avgMarketPrice.toFixed(2)}</div> */}
+    //   </Card.Content>
+    // )
+
+
+
+
   return (
 <a href={props.card._links.web.href}>
   <Card>
@@ -21,11 +53,9 @@ const ProductCard = props => {
         {props.card.location.display_location}
       </Card.Description>
     </Card.Content>
-    <Card.Content extra>
-      <div>This Price: ${props.card.price.amount} + {props.card.shipping.rates[0].rate.display} shipping</div>
-      <div>Avg. Price: ${props.card.SCOOP.priceToDisplay.toFixed(2)}</div>
 
-    </Card.Content>
+      {prices}
+
     <Card.Content extra>
       <Icon name='dollar' />
         {

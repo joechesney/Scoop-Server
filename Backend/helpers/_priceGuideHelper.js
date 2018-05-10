@@ -30,6 +30,7 @@ module.exports = (productObj) => {
       }
       productObj.SCOOP = dealInfo;
       return productObj;
+
     } else {
       console.log('WTFFFFFFFFF in priceGuide',productObj.model);
       return new Error("no embedded price guide info bro")
