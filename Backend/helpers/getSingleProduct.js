@@ -1,5 +1,6 @@
 
 const request = require('request');
+const determinePriceType = require('./determinePriceType');
 
 module.exports = (access_token, urlSuffix) => {
   return new Promise((resolve, reject) => {
@@ -16,9 +17,11 @@ module.exports = (access_token, urlSuffix) => {
     }
     request(options, (error, response, html) => {
       if (!error && response) {
-        response = JSON.parse(response.body); //THIS WORKS!
-        resolve(response);
+        listing = determinePriceType(JSON.parse(response.body)); //THIS WORKS!
+        // console.log('LISTING',listing);
+        resolve(listing);
       } else {
+        let error = new Error("Something went wrong in getSingleProduct")
         reject(error)
       }
     })
