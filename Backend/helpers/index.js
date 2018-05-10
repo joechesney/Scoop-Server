@@ -1,12 +1,14 @@
 
-getProductsList = require('./_getProductsList');
-getSingleProduct = require('./_getSingleProduct');
-loginAuth = require('./_loginAuth');
+getProductsList = require('./getProductsList');
+getSingleProduct = require('./getSingleProduct');
+loginAuth = require('./loginAuth');
+comparisonShopping = require('./_comparisonShopping');
 priceGuide = require('./_priceGuide');
 
 module.exports={
   getProductsList,
   getSingleProduct,
   loginAuth,
+  comparisonShopping,
   priceGuide,
 }

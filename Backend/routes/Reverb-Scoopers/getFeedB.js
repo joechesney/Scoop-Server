@@ -1,6 +1,6 @@
 const feedRouter = require('express').Router();
 const request = require('request');
-const { loginAuth, getProductsList, comparePrices, getSingleProduct } = require("../../helpers/");
+const { loginAuth, getProductsList, getSingleProduct } = require("../../helpers/");
 
 
 // "/myfeed"

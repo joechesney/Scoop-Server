@@ -1,7 +1,7 @@
 
 const request = require('request');
-const priceGuide = require('./_priceGuide');
-
+// This returns just a list of the products on the specified list.
+// The returned obects will not have the _embedded data on them yet
 module.exports = (access_token, urlSuffix) => {
   return new Promise((resolve, reject) => {
 
@@ -18,10 +18,8 @@ module.exports = (access_token, urlSuffix) => {
     request(options, (error, response, html) => {
       if (!error && response) {
         response = JSON.parse(response.body); //THIS WORKS!
-        priceGuide(response)
-        .then(listingWithPriceInfo=>{
-          resolve(listingWithPriceInfo);
-        })
+        // console.log('',);
+        resolve(response);
       } else {
         reject(error)
       }

@@ -1,5 +1,5 @@
 const watchlistRouter = require('express').Router();
-const { loginAuth, getProductsList } = require("../../helpers/index.js");
+const { loginAuth, getProductsList, comparisonShopping, priceGuide } = require("../../helpers/index.js");
 
 // "/mywatchlist"
 watchlistRouter.get('/', function (req, res) {
@@ -10,19 +10,30 @@ watchlistRouter.get('/', function (req, res) {
   then(token=>{
     getProductsList(token.access_token, "/api/wants")
     .then(dataFromAPI=>{
-      let promiseArray = [];
+      let promiseArray1 = [];
+      productsArray = [];
       // console.log('dataFromAPI',dataFromAPI);
       for(let i = 0; i < dataFromAPI.listings.length; i++){
-        if(dataFromAPI.listings[i].)
-        promiseArray.push(getSingleProduct(token.access_token, dataFromAPI.listings[i]._links.self.href));
+        promiseArray1.push(getSingleProduct(token.access_token, dataFromAPI.listings[i]._links.self.href));
       }
+      console.log('dataFROMAPI');
+      Promise.all(promiseArray1).then(listings=>{
+        let listingsWithPriceGuideData = listings.filter((listing)=>listing.SCOOP.hasPriceGuide).map(listing=>priceGuide(listing))
+        console.log('listings',listingsWithPriceGuideData);
+        // let listingsWithNeither = listings.filter((listing)=>listing.SCOOP.hasNeither)
+        // let listingsWithCompShopData = listings
+        // .filter((listing)=>listing.SCOOP.hasCompShop)
+        // .map(listing, ()=>{
+        //   getSingleProduct(token.access_token, listing._links.comparison_shopping)
+        //   .then(compShopData=>{
+        //     listing.compShopData = compShopData;
 
-      Promise.all(promiseArray).then(listings=>{
-        if(listings){
-          res.send(listings);
-        }
+        //     })
+        //   });
+        //   // need to concat the three sets of listings here then return the giant list
+        //   let allListings = listingsWithPriceGuideData.concat(listingsWithCompShopData, listingsWithNeither);
+          res.send(listingsWithPriceGuideData);
       })
-
     })
   })
   .catch(error=>{if(error){console.log('execution error: ',error);}
