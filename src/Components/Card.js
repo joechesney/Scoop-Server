@@ -69,9 +69,9 @@ const ProductCard = props => {
           <Card.Content extra>
             <Icon name='dollar' />
               {
-                (props.card.SCOOP)&&(props.card.SCOOP.percentOfMarketPrice < 100)
+                (props.card.SCOOP)&&(props.card.SCOOP.isLowestAvailable)
                 ? <span className="scoopPrice">This is the lowest price available</span>
-                : <span className="notScoopPrice">${ (props.card.SCOOP.percentOfMarketPrice - 100).toFixed(0)}% above lowest available price</span>
+                : <span className="notScoopPrice">${ (props.card.SCOOP.percentAboveLowestAvailable)}% above lowest available price</span>
               }
           </Card.Content>
         </Card>

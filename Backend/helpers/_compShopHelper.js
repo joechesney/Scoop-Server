@@ -6,15 +6,15 @@
 module.exports = (productObj) =>{
 
   if(+productObj.compShopData.used_low_price.amount > 0){
-    let priceComparedToLow;
+    let percentAboveLowestAvailable;
     // if the products price is above the used_low_price then show
     // its price compared to that low
     if(+productObj.price.amount > +productObj.compShopData.used_low_price.amount){
-      priceComparedToLow = (100 - (100*(+productObj.price.amount/productObj.compShopData.used_low_price.amount)))
-      console.log('priceComparedToLow',priceComparedToLow);
-      console.log('product price:',+productObj.price.amount);
-      console.log('lowest used price:',productObj.compShopData.used_low_price.amount);
-      productObj.SCOOP.priceComparedToLow = priceComparedToLow;
+      // let percentOfMarketPrice = 100 * (+productPrice/avgMarketPrice).toFixed(2);
+
+      percentAboveLowestAvailable = (100*(+productObj.price.amount/productObj.compShopData.used_low_price.amount).toFixed(2));
+
+      productObj.SCOOP.percentAboveLowestAvailable =(-1)* (100 - percentAboveLowestAvailable).toFixed(2);
 
       productObj.SCOOP.lowestAvailable = +productObj.compShopData.used_low_price.amount;
       productObj.SCOOP.isLowestAvailable = false;
