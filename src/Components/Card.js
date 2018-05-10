@@ -23,7 +23,7 @@ const ProductCard = props => {
     </Card.Content>
     <Card.Content extra>
       <div>This Price: ${props.card.price.amount} + {props.card.shipping.rates[0].rate.display} shipping</div>
-      <div>Avg. Price: ${props.card.SCOOP.avgMarketPrice.toFixed(2)}</div>
+      <div>Avg. Price: ${props.card.SCOOP.priceToDisplay.toFixed(2)}</div>
 
     </Card.Content>
     <Card.Content extra>
