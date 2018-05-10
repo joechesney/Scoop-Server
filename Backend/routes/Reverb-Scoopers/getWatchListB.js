@@ -1,5 +1,5 @@
 const watchlistRouter = require('express').Router();
-const { loginAuth, getProductsList, comparisonShopping, priceGuide, getCompShopData, getSingleProduct } = require("../../helpers/index.js");
+const { loginAuth, getProductsList, comparisonShopping, priceGuideHelper, getCompShopData, getSingleProduct } = require("../../helpers/index.js");
 
 // "/mywatchlist"
 watchlistRouter.get('/', function (req, res) {
@@ -18,21 +18,21 @@ watchlistRouter.get('/', function (req, res) {
       }
       Promise.all(promiseArray1).then(listings=>{
         let promiseArray2 = [];
-        let listingsWithPriceGuideData = listings.filter((listing)=>listing.SCOOP.hasPriceGuide).map(listing=>priceGuide(listing))
-        // let listingsWithNeither = listings.filter((listing)=>listing.SCOOP.hasNeither)
+        let listingsWithPriceGuideData = listings.filter((listing)=>listing.SCOOP.hasPriceGuide).map(listing=>priceGuideHelper(listing));
+
+        // i know this isnt being assigned to anything.
+        // im just doing it to create promiseArray2
         listings
         .filter((listing)=>listing.SCOOP.hasCompShop)
         .map(listing=>{
           promiseArray2.push(getCompShopData(token.access_token, listing));
-          });
+        });
         Promise.all(promiseArray2)
         .then(listingsWithCompShopData=>{
-          // console.log('listingsWithCompShopData777777777777777777777777777777777777777777777777777777777777777777777',listingsWithCompShopData);
+
           let allListings = listingsWithPriceGuideData.concat(listingsWithCompShopData);
           res.send(allListings);
         })
-        // need to concat the three sets of listings here then return the giant list
-        // let allListings = listingsWithPriceGuideData.concat(listingsWithCompShopData, listingsWithNeither);
       })
     })
   })

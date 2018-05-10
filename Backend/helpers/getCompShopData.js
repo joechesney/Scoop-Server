@@ -1,6 +1,6 @@
 
 const request = require('request');
-const comparisonShopping = require('./_comparisonShopping');
+const compShopHelper = require('./_compShopHelper');
 
 module.exports = (access_token, productObj) => {
   return new Promise((resolve, reject) => {
@@ -20,7 +20,7 @@ module.exports = (access_token, productObj) => {
         info = JSON.parse(response.body); //THIS WORKS!
         // console.log('LISTING',listing);
         productObj.compShopData = info;
-        productObj = comparisonShopping(productObj);
+        productObj = compShopHelper(productObj);
         resolve(productObj);
       } else {
         let error = new Error("Something went wrong in getSingleProduct")
