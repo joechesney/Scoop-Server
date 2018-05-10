@@ -2,11 +2,11 @@
 getProductsList = require('./_getProductsList');
 getSingleProduct = require('./_getSingleProduct');
 loginAuth = require('./_loginAuth');
-comparePrices = require('./_comparePrices');
+priceGuide = require('./_priceGuide');
 
 module.exports={
   getProductsList,
   getSingleProduct,
   loginAuth,
-  comparePrices,
+  priceGuide,
 }

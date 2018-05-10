@@ -3,7 +3,7 @@
 /*
   1. getWatchList
   2. getListings/getPrice-GuidePrices (can be done asynchronously, if possible)
-  4. _comparePrices
+  4. _priceGuide
   5. send any listings that bring up good deals to the front end/send notification to browser
 */
 const routes = require('./routes/index');

@@ -33,10 +33,10 @@ module.exports = (productObj) => {
 
     } else if((productObj._embedded == undefined) && (productObj._links.comparison_shopping)){
       // These products do not have the convenient embedded data,
-      // but i cna send a get request to the appi endpoint on
+      // but i can send a get request to the appi endpoint on
       // comparison_shopping and see what it has
       let compUrl = productObj._links.comparison_shopping.href;
-      productObj.SCOOP = compUrl;
+      productObj.SCOOP = {compUrl};
       console.log('Has comparison URL:',productObj._links.comparison_shopping);
       resolve(productObj);
     } else if((productObj._embedded == undefined) && (!productObj._links.comparison_shopping)){
@@ -45,7 +45,7 @@ module.exports = (productObj) => {
       // try to find something i compare it to, but most
       // likely i will just display these with a message like
       // "No average price data for this product"
-      console.log('no embedded or comparison shopping url',productObj.model);
+      console.log('Has no embedded or comparison shopping url:',productObj.model);
       resolve(productObj)
 
     } else {
