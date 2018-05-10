@@ -1,12 +1,12 @@
 
 const request = require('request');
-const comparePrices = require('./_comparePrices');
+const compShopHelper = require('./_compShopHelper');
 
-module.exports = (access_token, urlSuffix) => {
+module.exports = (access_token, productObj) => {
   return new Promise((resolve, reject) => {
 
     let options = {
-      url: `https://reverb.com${urlSuffix}`,
+      url: `https://reverb.com${productObj._links.comparison_shopping.href}`,
       headers: {
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36',
         'Authorization': `Bearer ${access_token}`
@@ -17,12 +17,13 @@ module.exports = (access_token, urlSuffix) => {
     }
     request(options, (error, response, html) => {
       if (!error && response) {
-        response = JSON.parse(response.body); //THIS WORKS!
-        comparePrices(response)
-        .then(listingWithPriceInfo=>{
-          resolve(listingWithPriceInfo);
-        })
+        info = JSON.parse(response.body); //THIS WORKS!
+        // console.log('LISTING',listing);
+        productObj.compShopData = info;
+        productObj = compShopHelper(productObj);
+        resolve(productObj);
       } else {
+        let error = new Error("Something went wrong in getSingleProduct")
         reject(error)
       }
     })

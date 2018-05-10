@@ -1,5 +1,5 @@
 const watchlistRouter = require('express').Router();
-const { loginAuth, getProductsList } = require("../../helpers/index.js");
+const { loginAuth, getProductsList, comparisonShopping, priceGuideHelper, getCompShopData, getSingleProduct } = require("../../helpers/index.js");
 
 // "/mywatchlist"
 watchlistRouter.get('/', function (req, res) {
@@ -8,42 +8,33 @@ watchlistRouter.get('/', function (req, res) {
 
   loginAuth().
   then(token=>{
-    return getProductsList(token.access_token, "/api/wants");
-  })
-  .then(dataFromAPI=>{
+    getProductsList(token.access_token, "/api/wants")
+    .then(dataFromAPI=>{
+      let promiseArray1 = [];
+      productsArray = [];
+      // console.log('dataFromAPI',dataFromAPI);
+      for(let i = 0; i < dataFromAPI.listings.length; i++){
+        promiseArray1.push(getSingleProduct(token.access_token, dataFromAPI.listings[i]._links.self.href));
+      }
+      Promise.all(promiseArray1).then(listings=>{
+        let promiseArray2 = [];
+        let listingsWithPriceGuideData = listings.filter((listing)=>listing.SCOOP.hasPriceGuide).map(listing=>priceGuideHelper(listing));
 
-    /*
-      To get to the listings object with all the used/new listings (if necessary):
-      this is on the product obj
-      productObj._links.web.href
-      productObj._links.comparison_shopping.href
-      the next link is on the obj that comes back from the above link (comparison_shopping)
-      productObj._links.web.used_listings
-      productObj._links.web.new_listings
+        // i know this isnt being assigned to anything.
+        // im just doing it to create promiseArray2
+        listings
+        .filter((listing)=>listing.SCOOP.hasCompShop)
+        .map(listing=>{
+          promiseArray2.push(getCompShopData(token.access_token, listing));
+        });
+        Promise.all(promiseArray2)
+        .then(listingsWithCompShopData=>{
 
-
-      *** PRICE COMPARISONS ***
-
-      To get the price of a product:
-      the price is saved as an integer in cents, so it has 2 extra integers on the the end,
-      so $500 is saved as 50000 cents
-      so i need to cenvert it to a dollar integer, or convert the price guide price to a price in cents. either/or
-
-      To get to the price guide data:
-      The price guide values literally saved on the same damn object as the product price itself,
-      so i can get both of those values in one api call lmao
-
-      originalProductObj._links.self.href
-      ex: "/api/listings/11150266-squier-classic-vibe-50s-telecaster-vintage-blonde"
-      this will take you to full listing endpoint for that item,
-      which has the price-guide data on it's object
-      then:
-      listingObj._embedded.price_guide.estimated_value.bottom_price
-      listingObj._embedded.price_guide.estimated_value.top_price
-      these are both integers already
-
-    */
-    res.send(dataFromAPI.listings[0]);
+          let allListings = listingsWithPriceGuideData.concat(listingsWithCompShopData);
+          res.send(allListings);
+        })
+      })
+    })
   })
   .catch(error=>{if(error){console.log('execution error: ',error);}
   })

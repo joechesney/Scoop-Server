@@ -3,6 +3,7 @@ import './App.css';
 // import axios from 'axios';
 import Container from './Components/Container';
 import Navbar from './Components/Navbar';
+import { BrowserRouter as Router, Route} from 'react-router-dom';
 
 
 class App extends Component {
@@ -15,10 +16,13 @@ class App extends Component {
 
   render() {
     return (
-      <div >
-        <Navbar />
-        <Container />
-      </div>
+      <Router>
+        <div>
+          <Navbar />
+          <Route path="/myfeed" render={()=><Container endpoint={"http://localhost:3333/scoop/myfeed"}/>} />
+          <Route path="/mywatchlist" render={()=><Container endpoint={"http://localhost:3333/scoop/mywatchlist"}/>} />
+        </div>
+      </Router>
     );
   }
 }
