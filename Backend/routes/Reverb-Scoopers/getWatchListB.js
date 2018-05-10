@@ -11,7 +11,9 @@ watchlistRouter.get('/', function (req, res) {
     getProductsList(token.access_token, "/api/wants")
     .then(dataFromAPI=>{
       let promiseArray = [];
+      // console.log('dataFromAPI',dataFromAPI);
       for(let i = 0; i < dataFromAPI.listings.length; i++){
+        if(dataFromAPI.listings[i].)
         promiseArray.push(getSingleProduct(token.access_token, dataFromAPI.listings[i]._links.self.href));
       }
 

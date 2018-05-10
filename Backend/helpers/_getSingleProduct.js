@@ -1,6 +1,6 @@
 
 const request = require('request');
-const comparePrices = require('./_comparePrices');
+const priceGuide = require('./_priceGuide');
 
 module.exports = (access_token, urlSuffix) => {
   return new Promise((resolve, reject) => {
@@ -18,7 +18,7 @@ module.exports = (access_token, urlSuffix) => {
     request(options, (error, response, html) => {
       if (!error && response) {
         response = JSON.parse(response.body); //THIS WORKS!
-        comparePrices(response)
+        priceGuide(response)
         .then(listingWithPriceInfo=>{
           resolve(listingWithPriceInfo);
         })
