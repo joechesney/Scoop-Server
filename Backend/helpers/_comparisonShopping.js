@@ -4,15 +4,19 @@
 // the productObj with that determined value as the productObj.SCOOP.priceToDisplay
 
 module.exports = (productObj) =>{
-  console.log('comparison shopping function:',productObj.new_low_price);
-  console.log('comparison shopping function:',productObj.used_low_price);
-  if(+productObj.used_low_price.amount > 0){
+  console.log('comparison shopping function:',productObj.compShopData.new_low_price);
+  console.log('comparison shopping function:',productObj.compShopData.used_low_price);
+  if(+productObj.compShopData.used_low_price.amount > 0){
     // if the products price is below the comparison_price used_low then show
     // its price compared to that low
-    let decimalOfMSRP = (+productObj.used_low_price.amount/+productObj.new_low_price.amount);
+    let decimalOfMSRP = (+productObj.compShopData.used_low_price.amount/+productObj.compShopData.new_low_price.amount);
     let percentOfMSRP = 100 * decimalOfMSRP;
     let percentBelowMSRP = 100 - percentOfMSRP;
     productObj.SCOOP.priceToDisplay = +productObj.price.amount;
+    return productObj;
+  } else {
+    productObj.SCOOP.priceToDisplay = +productObj.price.amount;
+    return productObj;
 
   }
 }

@@ -4,6 +4,7 @@ getSingleProduct = require('./getSingleProduct');
 loginAuth = require('./loginAuth');
 comparisonShopping = require('./_comparisonShopping');
 priceGuide = require('./_priceGuide');
+getCompShopData = require('./getCompShopData');
 
 module.exports={
   getProductsList,
@@ -11,4 +12,5 @@ module.exports={
   loginAuth,
   comparisonShopping,
   priceGuide,
+  getCompShopData,
 }
