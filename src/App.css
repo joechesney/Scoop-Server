@@ -33,3 +33,14 @@
 .notScoopPrice {
   color: red;
 }
+
+ul.navbar li{
+  display: inline;
+  padding: .5em;
+  margin: .5em;
+  font-weight: bolder;
+}
+
+.selected{
+  background-color: lightcoral;
+}
