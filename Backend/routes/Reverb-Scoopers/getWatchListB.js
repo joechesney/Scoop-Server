@@ -12,7 +12,7 @@ watchlistRouter.get('/', function (req, res) {
   // call the login function and it will send back the auth token
   // then send the auth token in the header of the GET request
 
-  sendText({phoneNumber:"+1 615-438-9707"});
+
 
   loginAuth().
   then(token=>{
@@ -37,7 +37,7 @@ watchlistRouter.get('/', function (req, res) {
         });
         Promise.all(promiseArray2)
         .then(listingsWithCompShopData=>{
-
+          sendText();
           let allListings = listingsWithPriceGuideData.concat(listingsWithCompShopData);
           res.send(allListings);
         })
