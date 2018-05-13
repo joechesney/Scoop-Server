@@ -3,6 +3,7 @@ import { Card, Icon, Image } from 'semantic-ui-react'
 
 const ProductCard = props => {
   const dateOfPublication = new Date(props.card.created_at).toLocaleString();
+  const shipping = props.card.shipping.rates[0] ? props.card.shipping.rates[0].rate.display + " shipping" : "Local Pickup Only"
   const wholeCard = props.card.SCOOP.hasPriceGuide === true
     ? (
 
@@ -18,13 +19,13 @@ const ProductCard = props => {
             </span>
           </Card.Meta>
           <Card.Description>
-            {props.card.condition}
+          <div>{props.card.condition}</div>
             {props.card.location.display_location}
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
           <div>
-            This Price: ${props.card.price.amount} + {props.card.shipping.rates[0].rate.display} shipping
+            This Price: ${props.card.price.amount} + {shipping}
           </div>
           <div>Avg. Price: ${props.card.SCOOP.avgMarketPrice.toFixed(2)}</div>
         </Card.Content>

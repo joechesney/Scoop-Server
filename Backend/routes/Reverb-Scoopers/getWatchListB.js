@@ -12,15 +12,12 @@ watchlistRouter.get('/', function (req, res) {
   // call the login function and it will send back the auth token
   // then send the auth token in the header of the GET request
 
-
-
   loginAuth().
   then(token=>{
     getProductsList(token.access_token, "/api/wants")
     .then(dataFromAPI=>{
       let promiseArray1 = [];
       productsArray = [];
-      // console.log('dataFromAPI',dataFromAPI);
       for(let i = 0; i < dataFromAPI.listings.length; i++){
         promiseArray1.push(getSingleProduct(token.access_token, dataFromAPI.listings[i]._links.self.href));
       }
@@ -37,7 +34,7 @@ watchlistRouter.get('/', function (req, res) {
         });
         Promise.all(promiseArray2)
         .then(listingsWithCompShopData=>{
-          sendText();
+          // sendText();
           let allListings = listingsWithPriceGuideData.concat(listingsWithCompShopData);
           res.send(allListings);
         })
