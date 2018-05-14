@@ -6,5 +6,6 @@ const indexRouter = Router();
 indexRouter.use('/myfeed', require('./getFeedB'));
 indexRouter.use('/mywatchlist', require('./getWatchlistB'));
 indexRouter.use('/home', require('./getHomePage'));
+indexRouter.use('/reverbDeals', require('./getReverbDeals'));
 
 module.exports = indexRouter;
