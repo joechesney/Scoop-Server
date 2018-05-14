@@ -6,7 +6,7 @@ const Navbar = () => {
     {displayName: "My Feed", path:"/myfeed"},
     {displayName: "My Watchlist", path:"/mywatchlist"},
     {displayName: "Reverb Deals", path:"/reverbDeals"},
-    {displayName: "Scoop Deals", path:"/scooplists"},
+    {displayName: "Scoop Deals", path:"/scoopDeals"},
   ];
 
   return (
