@@ -27,6 +27,73 @@
   to { transform: rotate(360deg); }
 }
 
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/****   NAVBAR    ****/
+
+
+div.navbar-container {
+  background-color: lightcoral;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 3;
+}
+
+ul.navbar li{
+  display: inline;
+  padding: 2em;
+  /* margin: 2em; */
+  font-weight: bolder;
+}
+
+ul.navbar li a {
+  color: navy;
+  font-size: 2em;
+}
+
+ul.navbar {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0 !important;
+}
+
+.selected{
+  box-shadow: 1,1,1,1;
+  text-shadow: .1em .1em 3px whitesmoke;
+  background-color: lightcoral;
+}
+
+/****   Page Container   ****/
+
+
+div.page-container {
+  width: 85vw;
+  margin-top: 7em;
+  margin-left: 7.5vw;
+  margin-right: 7.5vw;
+  padding-left: auto;
+  padding-right: auto;
+  /* display: block; */
+}
+
+
+div.ui.cards {
+  justify-content: space-between;
+}
+
+
+
+
+
+/****   Product Card   ****/
+
 .scoopPrice {
   color: limegreen;
 }
@@ -34,19 +101,6 @@
   color: red;
 }
 
-ul.navbar li{
-  display: inline;
-  padding: .5em;
-  margin: .5em;
-  font-weight: bolder;
+div.ui.card {
+  margin-top: 2em !important;
 }
-
-.selected{
-  background-color: lightcoral;
-}
-
-.navbar-container {
-  display: flex;
-  /* flex-flow:  */
-}
-
