@@ -26,7 +26,7 @@ class App extends Component {
             <Route exact path="/" render={()=><Home endpoint={"http://localhost:3333/scoop/home"}/>} />
             <Route path="/myfeed" render={()=><Container endpoint={"http://localhost:3333/scoop/myfeed"}/>} />
             <Route path="/mywatchlist" render={()=><Container endpoint={"http://localhost:3333/scoop/mywatchlist"}/>} />
-            <Route path="/reverblists" render={()=><List endpoint={"http://localhost:3333/scoop/reverblists"}/>} />
+            <Route path="/reverbDeals" render={()=><Container endpoint={"http://localhost:3333/scoop/reverbDeals"}/>} />
             <Route path="/scooplists" render={()=><List endpoint={"http://localhost:3333/scoop/scooplists"}/>} />
             <Route path="/product" render={()=><Product endpoint={"http://localhost:3333/scoop/product"}/>} />
           </div>
