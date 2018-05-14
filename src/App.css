@@ -44,3 +44,9 @@ ul.navbar li{
 .selected{
   background-color: lightcoral;
 }
+
+.navbar-container {
+  display: flex;
+  /* flex-flow:  */
+}
+

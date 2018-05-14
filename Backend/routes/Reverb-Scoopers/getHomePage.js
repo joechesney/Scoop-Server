@@ -5,6 +5,7 @@ const loginAuth = require('../../helpers/loginAuth');
 
 // "/scoop/home"
 homePageRouter.get('/', function (req, res, next) {
+  console.log('homepagerouter');
   loginAuth().then(token => {
     getHomePageLists(token.access_token)
       .then(something => {
