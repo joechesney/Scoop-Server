@@ -7,11 +7,12 @@ class Home extends React.Component {
     super(props);
     this.state= {
       lists: [],
+      endpoint: props.endpoint,
     }
   }
 
   componentDidMount() {
-    axios.get("/scoop/home")
+    axios.get(this.state.endpoint)
     .then(response=>{
       console.log('SWEET Home DATA',response.data);
       this.setState(prevState=> {
