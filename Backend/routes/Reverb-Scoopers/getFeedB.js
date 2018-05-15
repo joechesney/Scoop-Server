@@ -3,7 +3,7 @@ const request = require('request');
 const { loginAuth, getProductsList, getSingleProduct } = require("../../helpers/");
 
 
-// "/myfeed"
+// "/myFeed"
 feedRouter.get('/', function (req, res, next) {
   // call the login function and it will send back the auth token
   // then send the auth token in the header of the GET request

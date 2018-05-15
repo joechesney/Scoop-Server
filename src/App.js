@@ -23,9 +23,9 @@ class App extends Component {
         <div>
           <Navbar />
           <div className="page-container">
-            <Route exact path="/" render={()=><Home endpoint={"http://localhost:3333/scoop/home"}/>} />
-            <Route path="/myfeed" render={()=><Container endpoint={"http://localhost:3333/scoop/myfeed"}/>} />
-            <Route path="/mywatchlist" render={()=><Container endpoint={"http://localhost:3333/scoop/mywatchlist"}/>} />
+            <Route exact path="/" render={()=><Home endpoint={"http://localhost:3333/scoop/homePage"}/>} />
+            <Route path="/myFeed" render={()=><Container endpoint={"http://localhost:3333/scoop/myFeed"}/>} />
+            <Route path="/myWatchlist" render={()=><Container endpoint={"http://localhost:3333/scoop/myWatchlist"}/>} />
             <Route path="/reverbDeals" render={()=><Container endpoint={"http://localhost:3333/scoop/reverbDeals"}/>} />
             <Route path="/scoopDeals" render={()=><Container endpoint={"http://localhost:3333/scoop/scoopDeals"}/>} />
             <Route path="/product" render={()=><Product endpoint={"http://localhost:3333/scoop/product"}/>} />
