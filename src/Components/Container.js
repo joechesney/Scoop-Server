@@ -10,7 +10,6 @@ class Container extends React.Component {
       products: [],
       endpoint: props.endpoint
     }
-
   }
 
   componentDidMount() {

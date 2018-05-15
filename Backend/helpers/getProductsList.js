@@ -18,7 +18,6 @@ module.exports = (access_token, urlSuffix) => {
     request(options, (error, response, html) => {
       if (!error && response) {
         response = JSON.parse(response.body); //THIS WORKS!
-        // console.log('',);
         resolve(response);
       } else {
         reject(error)

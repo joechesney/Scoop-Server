@@ -10,7 +10,7 @@ module.exports = (productObj) => {
       let percentOfMarketPrice = 100 * (+productPrice/avgMarketPrice).toFixed(2);
 
       let decimalBelowMarketPrice = ((avgMarketPrice-productPrice)/(avgMarketPrice)).toFixed(2);
-      let percentBelowMarketPrice = decimalBelowMarketPrice * 100;
+      let percentBelowMarketPrice = (decimalBelowMarketPrice * 100).toFixed(0);
 
       if(productPrice < avgMarketPrice){
         isGoodDeal = true;
