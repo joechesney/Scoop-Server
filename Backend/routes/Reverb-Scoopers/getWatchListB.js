@@ -1,5 +1,11 @@
 const watchlistRouter = require('express').Router();
-const { loginAuth, getProductsList, comparisonShopping, priceGuideHelper, getCompShopData, getSingleProduct } = require("../../helpers/index.js");
+const { loginAuth,
+        getProductsList,
+        comparisonShopping,
+        priceGuideHelper,
+        getCompShopData,
+        getSingleProduct,
+        sendText, } = require("../../helpers/index.js");
 
 // "/mywatchlist"
 watchlistRouter.get('/', function (req, res) {
@@ -12,7 +18,6 @@ watchlistRouter.get('/', function (req, res) {
     .then(dataFromAPI=>{
       let promiseArray1 = [];
       productsArray = [];
-      // console.log('dataFromAPI',dataFromAPI);
       for(let i = 0; i < dataFromAPI.listings.length; i++){
         promiseArray1.push(getSingleProduct(token.access_token, dataFromAPI.listings[i]._links.self.href));
       }
@@ -29,7 +34,7 @@ watchlistRouter.get('/', function (req, res) {
         });
         Promise.all(promiseArray2)
         .then(listingsWithCompShopData=>{
-
+          // sendText();
           let allListings = listingsWithPriceGuideData.concat(listingsWithCompShopData);
           res.send(allListings);
         })
