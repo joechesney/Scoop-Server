@@ -8,19 +8,22 @@ const { loginAuth,
   getSingleProduct,
   sendText, } = require("../../helpers/index.js");
 
+  var arrayOfScoops = [];
+  let pageCounter = 1;
 
 // "/scoop/home"
 scoopDealsRouter.get('/', function (req, res, next) {
   console.log('scoopDealsRouter');
-  loginAuth().then(token => {
-    getProductsList(token.access_token, "/api/listings/all")
+  const getThoseMugs = (access_token, url) => {
+  getProductsList(access_token, url)
     .then(dataFromAPI=>{
-      // console.log('dataFromAPI',dataFromAPI);
-      // res.send(dataFromAPI)
       let promiseArray1 = [];
+      // pageCounter = dataFromAPI.current_page + 1;
+      console.log('pageCounter',pageCounter);
+      console.log('URL: ',url);
       productsArray = [];
       for(let i = 0; i < dataFromAPI.listings.length; i++){
-        promiseArray1.push(getSingleProduct(token.access_token, dataFromAPI.listings[i]._links.self.href));
+          promiseArray1.push(getSingleProduct(access_token, dataFromAPI.listings[i]._links.self.href));
       }
       Promise.all(promiseArray1).then(listings=>{
         let promiseArray2 = [];
@@ -31,17 +34,29 @@ scoopDealsRouter.get('/', function (req, res, next) {
         listings
         .filter((listing)=>listing.SCOOP.hasCompShop)
         .map(listing=>{
-          promiseArray2.push(getCompShopData(token.access_token, listing));
+            promiseArray2.push(getCompShopData(access_token, listing));
         });
         Promise.all(promiseArray2)
         .then(listingsWithCompShopData=>{
           // sendText();
           let allListings = listingsWithPriceGuideData.concat(listingsWithCompShopData);
-          res.send(allListings);
+          allListings.forEach(listing=>{
+            if(listing.SCOOP.isGoodDeal) arrayOfScoops.push(listing);
+          })
+          if(arrayOfScoops.length < 20 && allListings.length > 0) {
+            pageCounter++;
+            getThoseMugs(access_token, `/api/my/feed?page=${pageCounter}&per_page=40`)
+          } else {
+            res.send(arrayOfScoops);
+          }
         })
       })
-    })
   })
+}
+    loginAuth().then(token => {
+      getThoseMugs(token.access_token, `/api/my/feed?page=${pageCounter}&per_page=40`);
+
+    })
 })
 
 exports = module.exports = scoopDealsRouter;
