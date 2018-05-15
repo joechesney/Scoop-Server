@@ -6,7 +6,6 @@ const ProductCard = props => {
   const shipping = props.card.shipping.rates[0] ? props.card.shipping.rates[0].rate.display + " shipping" : "Local Pickup Only"
   const wholeCard = props.card.SCOOP.hasPriceGuide === true
     ? (
-
       <Card>
         <Image src={props.card.photos[0]._links.small_crop.href} />
         <Card.Content>
@@ -38,13 +37,9 @@ const ProductCard = props => {
             }
         </Card.Content>
       </Card>
-
-
     )
     :
-
     (
-
         <Card>
           <Image src={props.card.photos[0]._links.small_crop.href} />
           <Card.Content>
@@ -79,18 +74,6 @@ const ProductCard = props => {
 
 
     );
-    // :
-    // (
-    //   <Card.Content extra>
-    //     <div>
-    //       This Price: ${props.card.price.amount} + {props.card.shipping.rates[0].rate.display} shipping
-    //     </div>
-    //     {/* <div>Avg. Price: ${props.card.SCOOP.avgMarketPrice.toFixed(2)}</div> */}
-    //   </Card.Content>
-    // )
-
-
-
 
   return (
     <a href={props.card._links.web.href}>

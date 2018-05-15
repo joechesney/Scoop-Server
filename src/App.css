@@ -70,8 +70,12 @@ ul.navbar {
   background-color: lightcoral;
 }
 
-/****   Page Container   ****/
+/****   Page Containers   ****/
 
+.homePageContainer {
+  display: flex;
+  justify-content: space-evenly;
+}
 
 div.page-container {
   width: 85vw;
@@ -83,14 +87,9 @@ div.page-container {
   /* display: block; */
 }
 
-
 div.ui.cards {
   justify-content: space-between;
 }
-
-
-
-
 
 /****   Product Card   ****/
 
