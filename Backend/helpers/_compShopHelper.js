@@ -29,7 +29,7 @@ module.exports = (productObj) =>{
     productObj.SCOOP.priceToDisplay = +productObj.price.amount;
     return productObj;
   } else {
-    console.log('Product without either used low price or new low price',productObj);
+    console.log('Product without either used low price or new low price',productObj.id);
     return productObj;
   }
 }
