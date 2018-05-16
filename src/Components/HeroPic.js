@@ -1,22 +1,10 @@
-import React from 'react';
+import React from 'react'
+import { Image } from 'semantic-ui-react'
+// import picture from '../images/one.jpg'
 
 const HeroPic = props => {
-  const wholeCard =
-    (
-      <Card>
-        <Image src={props.picture} />
-        <Card.Content>
-          <Card.Header>
-            {props.header}
-          </Card.Header>
-        </Card.Content>
-      </Card>
-    );
-
   return (
-    <NavLink to={props.destination}>
-      {wholeCard}
-    </NavLink>
+    <img className="heroPic" src={props.heroPic} />
   )
 }
 
