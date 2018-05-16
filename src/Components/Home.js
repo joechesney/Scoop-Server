@@ -1,10 +1,7 @@
 import React from 'react';
 import HomeCard from './HomeCard'
 import axios from 'axios';
-import { NavLink } from 'react-router-dom';
 import HeroPic from './HeroPic'
-import one from '../images/one.jpg'
-// import two from '../images/two.jpg'
 import Mission from './Mission';
 
 
