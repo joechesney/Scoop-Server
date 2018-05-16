@@ -33,7 +33,6 @@ class Home extends React.Component {
     return (
       <div>
         <HeroPic heroPic={this.state.heroPic} />
-        <Mission />
         <div className="homePageContainer">
           <HomeCard picture={this.state.pics.myFeedPic} header="My Feed" destination="/myFeed" />
           <HomeCard picture={this.state.pics.myWatchlistPic} header="My Watchlist" destination="/myWatchlist" />
