@@ -103,3 +103,27 @@ div.ui.cards {
 div.ui.card {
   margin-top: 2em !important;
 }
+
+/**** Hero Pic  ****/
+
+.heroPic {
+  width: 100vw;
+}
+
+.fullBody {
+  width: 100%;
+  margin-top: 77px;
+}
+
+
+/****  Mission  ****/
+
+.mission {
+  display: block;
+  margin: 2em auto;
+  color: red;
+  text-align: center;
+  font-weight: bolder;
+}
+
+

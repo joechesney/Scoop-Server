@@ -2,6 +2,11 @@ import React from 'react';
 import HomeCard from './HomeCard'
 import axios from 'axios';
 import { NavLink } from 'react-router-dom';
+import HeroPic from './HeroPic'
+import one from '../images/one.jpg'
+// import two from '../images/two.jpg'
+import Mission from './Mission';
+
 
 class Home extends React.Component {
   constructor(props) {
@@ -9,6 +14,7 @@ class Home extends React.Component {
     this.state = {
       pics: {},
       endpoint: props.endpoint,
+      heroPic: props.heroPic,
     }
   }
 
@@ -28,11 +34,15 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div className="homePageContainer">
+      <div>
+        <HeroPic heroPic={this.state.heroPic} />
+        <Mission />
+        <div className="homePageContainer">
           <HomeCard picture={this.state.pics.myFeedPic} header="My Feed" destination="/myFeed" />
           <HomeCard picture={this.state.pics.myWatchlistPic} header="My Watchlist" destination="/myWatchlist" />
           <HomeCard picture={this.state.pics.reverbDealsPic} header="Reverb Deals" destination="/reverbDeals" />
           <HomeCard picture={this.state.pics.scoopDealsPic} header="Scoop Deals" destination="/scoopDeals" />
+        </div>
       </div>
     )
   }
