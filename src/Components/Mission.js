@@ -5,7 +5,7 @@ import { Image } from 'semantic-ui-react'
 const Mission = props => {
   return (
     <div className="mission">
-      <p>We find the scoops, just for you.</p>
+      <h2>We find the scoops, just for you.</h2>
     </div>
   )
 }

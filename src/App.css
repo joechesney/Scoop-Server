@@ -32,6 +32,10 @@ body {
   padding: 0;
 }
 
+.centered {
+  text-align: center;
+}
+
 /****   NAVBAR    ****/
 
 
@@ -127,3 +131,28 @@ div.ui.card {
 }
 
 
+/****  Mission  ****/
+
+.footer {
+  margin-top: 2em;
+  /* margin-bottom: 2em; */
+  background-color: lightcoral;
+  color: black;
+  min-height: 7vh;
+  /* position: absolute;
+  bottom: 0; */
+  width: 100%;
+}
+
+/* .copyright {
+  margin-top: 2em;
+} */
+
+.footerContainer {
+  display: flex;
+  justify-content: space-evenly
+}
+
+.footerSection {
+  width: 25vw;
+}

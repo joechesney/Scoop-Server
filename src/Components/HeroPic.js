@@ -1,10 +1,8 @@
 import React from 'react'
-import { Image } from 'semantic-ui-react'
-// import picture from '../images/one.jpg'
 
 const HeroPic = props => {
   return (
-    <img className="heroPic" src={props.heroPic} />
+    <img className="heroPic" src={props.heroPic} alt="Totally sweet picture of a guitar" />
   )
 }
 

@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
-// import axios from 'axios';
 import Container from './Components/Container';
 import Navbar from './Components/Navbar';
 import Home from './Components/Home';
 import Product from './Components/Product';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
-import one from './images/one.jpg'
-import six from './images/six.jpg'
-import three from './images/three.jpg'
-import four from './images/four.jpg'
-import five from './images/five.jpg'
+import one from './images/one.jpg';
+import six from './images/six.jpg';
+import three from './images/three.jpg';
+import four from './images/four.jpg';
+import five from './images/five.jpg';
+import Footer from './Components/Footer';
 
 class App extends Component {
   constructor(props) {
@@ -34,6 +34,7 @@ class App extends Component {
             <Route path="/scoopDeals" render={()=><Container endpoint={"http://localhost:3333/scoop/scoopDeals"} heroPic={five} />} />
             <Route path="/product" render={()=><Product endpoint={"http://localhost:3333/scoop/product"} />} />
           </div>
+          <Footer />
         </div>
       </Router>
     );
