@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import ProductCard from './Card';
-import { Card } from 'semantic-ui-react'
+import { Card, Icon } from 'semantic-ui-react'
 import HeroPic from './HeroPic'
 class Container extends React.Component {
   constructor(props){
@@ -10,6 +10,8 @@ class Container extends React.Component {
       products: [],
       endpoint: props.endpoint,
       heroPic: props.heroPic,
+      loading: true,
+      pageName: this.props.pageName,
     }
   }
 
@@ -19,16 +21,21 @@ class Container extends React.Component {
       console.log('SWEET SWEET DATA',response.data);
       this.setState(prevState=> {
         return {
-          products: response.data
+          products: response.data,
+          loading: false,
+
         }
       });
     });
   }
+
+
   render() {
     return (
       <div>
         <HeroPic heroPic={this.state.heroPic} />
         <div className="page-container">
+          {this.state.loading ? <div className="loading centered"> <h1>Loading {this.state.pageName} <Icon loading name='spinner' /> </h1> </div> :
           <Card.Group>
             {
               this.state.products.filter(product=>product.SCOOP !== undefined).map((product)=>(
@@ -41,6 +48,7 @@ class Container extends React.Component {
               )
             }
           </Card.Group>
+          }
         </div>
       </div>
     )
