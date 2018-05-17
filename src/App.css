@@ -175,3 +175,7 @@ div.ui.card {
   z-index: 1;
 }
 
+/****  Loading Icon  ****/
+.loading {
+  height: 500px;
+}
