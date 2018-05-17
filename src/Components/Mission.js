@@ -1,11 +1,9 @@
 import React from 'react'
-import { Image } from 'semantic-ui-react'
-// import picture from '../images/one.jpg'
 
 const Mission = props => {
   return (
-    <div className="mission">
-      <h2>We find the scoops, just for you.</h2>
+    <div className="mission centered">
+      <blockquote>Here at Scoop, our mission is to find the best deals on used music gear from Reverb.com</blockquote>
     </div>
   )
 }
