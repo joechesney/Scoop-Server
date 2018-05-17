@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
-// import axios from 'axios';
 import Container from './Components/Container';
 import Navbar from './Components/Navbar';
 import Home from './Components/Home';
-import List from './Components/List';
 import Product from './Components/Product';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
-
+import one from './images/one.jpg';
+import six from './images/six.jpg';
+import three from './images/three.jpg';
+import four from './images/four.jpg';
+import five from './images/five.jpg';
+import Footer from './Components/Footer';
 
 class App extends Component {
   constructor(props) {
@@ -20,16 +23,18 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <div className="fullBody">
           <Navbar />
-          <div className="page-container">
-            <Route exact path="/" render={()=><Home endpoint={"http://localhost:3333/scoop/home"}/>} />
-            <Route path="/myfeed" render={()=><Container endpoint={"http://localhost:3333/scoop/myfeed"}/>} />
-            <Route path="/mywatchlist" render={()=><Container endpoint={"http://localhost:3333/scoop/mywatchlist"}/>} />
-            <Route path="/reverbDeals" render={()=><Container endpoint={"http://localhost:3333/scoop/reverbDeals"}/>} />
-            <Route path="/scoopDeals" render={()=><Container endpoint={"http://localhost:3333/scoop/scoopDeals"}/>} />
-            <Route path="/product" render={()=><Product endpoint={"http://localhost:3333/scoop/product"}/>} />
+
+          <div >
+            <Route exact path="/" render={()=><Home endpoint={"http://localhost:3333/scoop/homePage"} picture={one} pageName="Scoop" />} />
+            <Route path="/myFeed" render={()=><Container endpoint={"http://localhost:3333/scoop/myFeed"} picture={six} pageName="My Feed" />} />
+            <Route path="/myWatchlist" render={()=><Container endpoint={"http://localhost:3333/scoop/myWatchlist"} picture={three} pageName="My Watchlist" />} />
+            <Route path="/reverbDeals" render={()=><Container endpoint={"http://localhost:3333/scoop/reverbDeals"} picture={four} pageName="Reverb Deals" />} />
+            <Route path="/scoopDeals" render={()=><Container endpoint={"http://localhost:3333/scoop/scoopDeals"} picture={five} pageName="Scoop Deals" />} />
+            <Route path="/product" render={()=><Product endpoint={"http://localhost:3333/scoop/product"} />} />
           </div>
+          <Footer />
         </div>
       </Router>
     );

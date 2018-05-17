@@ -1,47 +1,43 @@
 .App {
   text-align: center;
 }
-
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
 }
-
 .App-header {
   background-color: #222;
   height: 150px;
   padding: 20px;
   color: white;
 }
-
 .App-title {
   font-size: 1.5em;
 }
-
 .App-intro {
   font-size: large;
 }
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
 body {
   margin: 0;
   padding: 0;
+  font-family: 'Lato', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.centered {
+  text-align: center;
 }
 
 /****   NAVBAR    ****/
 
 
 div.navbar-container {
-  background-color: lightcoral;
+  background-color: snow;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 3;
+  box-shadow: 0 0 5px rgba(65, 65, 65, 0.3);
+
 }
 
 ul.navbar li{
@@ -52,8 +48,9 @@ ul.navbar li{
 }
 
 ul.navbar li a {
-  color: navy;
+  color: #f6870f;
   font-size: 2em;
+
 }
 
 ul.navbar {
@@ -65,13 +62,20 @@ ul.navbar {
 }
 
 .selected{
-  box-shadow: 1,1,1,1;
-  text-shadow: .1em .1em 3px whitesmoke;
-  background-color: lightcoral;
+  /* box-shadow: 1,1,1,1; */
+  /* text-shadow: .1em .1em 1px #414141; */
+  /* background-color: #f6870f; */
+  text-decoration: underline overline;
 }
 
-/****   Page Container   ****/
+/****   Page Containers   ****/
 
+.homePageContainer {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-top: 7em;
+}
 
 div.page-container {
   width: 85vw;
@@ -80,17 +84,12 @@ div.page-container {
   margin-right: 7.5vw;
   padding-left: auto;
   padding-right: auto;
-  /* display: block; */
+  flex-wrap: wrap;
 }
-
 
 div.ui.cards {
   justify-content: space-between;
 }
-
-
-
-
 
 /****   Product Card   ****/
 
@@ -103,4 +102,108 @@ div.ui.cards {
 
 div.ui.card {
   margin-top: 2em !important;
+}
+
+/**** Hero Pic  ****/
+
+.heroPic {
+  width: 100vw;
+  min-height: 310px;
+  opacity: 0.8;
+}
+
+.fullBody {
+  width: 100%;
+  margin-top: 77px;
+}
+
+/****  Mission  ****/
+
+.mission {
+  display: block;
+  margin: 2em auto 0 auto;
+  color: #414141;
+  font-weight: bolder;
+  font-size: 1.5em;
+  max-width: 50vw;
+}
+
+blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+blockquote p {
+  display: inline;
+}
+
+/****  Footer  ****/
+
+.footer {
+  margin-top: 2em;
+  /* margin-bottom: 2em; */
+  background-color: #f6870f;
+  color: #414141;
+  min-height: 7vh;
+  /* position: absolute;
+  bottom: 0; */
+  width: 100%;
+}
+
+.footerContainer {
+  display: flex;
+  justify-content: space-evenly
+}
+
+.footerSection {
+  width: 25vw;
+}
+
+
+/****  HeroPic  ****/
+
+.mainHeader {
+  font-size: 11rem;
+  color: #f6870f;
+  text-shadow: -1px 0 #414141, 0 1px #414141, 1px 0 #414141, 0 -1px #414141;
+  padding-top: .2em;
+  font-family: 'Pattaya', sans-serif;
+}
+
+.bgdiv {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: .7;
+  width: 100%;
+   /* height: 100%; */
+
+  min-height: 310px;
+}
+
+.slogan {
+  color: snow;
+}
+
+.parentdiv {
+  position: relative;
+  z-index: 1;
+}
+
+/****  Loading Icon  ****/
+.loading {
+  height: 500px;
 }
