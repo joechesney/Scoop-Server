@@ -20,6 +20,7 @@
 body {
   margin: 0;
   padding: 0;
+  font-family: 'Lato', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 .centered {
   text-align: center;
@@ -172,12 +173,11 @@ blockquote p {
 /****  HeroPic  ****/
 
 .mainHeader {
-  font-size: 15vh;
-  /* font-family: 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+  font-size: 10rem;
   color: #f6870f;
   text-shadow: -1px 0 #414141, 0 1px #414141, 1px 0 #414141, 0 -1px #414141;
   padding-top: .5em;
-
+  font-family: 'Pattaya', sans-serif;
 }
 
 .bgdiv {

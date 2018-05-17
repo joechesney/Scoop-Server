@@ -33,7 +33,7 @@ const ProductCard = props => {
             {
               (props.card.SCOOP)&&(props.card.SCOOP.percentOfMarketPrice < 100)
               ? <span className="scoopPrice">${props.card.SCOOP.percentBelowMarketPrice} % below market price</span>
-              : <span className="notScoopPrice">${ (props.card.SCOOP.percentOfMarketPrice - 100).toFixed(0)}% above market price</span>
+              : <span className="notScoopPrice">{ (props.card.SCOOP.percentOfMarketPrice - 100).toFixed(0)}% above market price</span>
             }
         </Card.Content>
       </Card>
