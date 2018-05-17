@@ -67,7 +67,7 @@ const ProductCard = props => {
               {
                 (props.card.SCOOP)&&(props.card.SCOOP.isLowestAvailable)
                 ? <span className="scoopPrice">This is the lowest price available</span>
-                : <span className="notScoopPrice">${ (props.card.SCOOP.percentAboveLowestAvailable)}% above lowest available price</span>
+                : <span className="notScoopPrice">{ (props.card.SCOOP.percentAboveLowestAvailable)}% above lowest available price</span>
               }
           </Card.Content>
         </Card>
