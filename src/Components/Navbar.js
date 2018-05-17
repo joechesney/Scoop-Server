@@ -3,8 +3,8 @@ import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
   const pages = [
-    {displayName: "My Feed", path:"/myfeed"},
-    {displayName: "My Watchlist", path:"/mywatchlist"},
+    {displayName: "My Feed", path:"/myFeed"},
+    {displayName: "My Watchlist", path:"/myWatchlist"},
     {displayName: "Reverb Deals", path:"/reverbDeals"},
     {displayName: "Scoop Deals", path:"/scoopDeals"},
   ];

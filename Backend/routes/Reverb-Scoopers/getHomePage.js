@@ -1,17 +1,58 @@
 
 const homePageRouter = require('express').Router();
-const getHomePageLists = require('../../helpers/getHomePageLists');
+const getProductsList = require('../../helpers/getProductsList');
+const { getThoseMugs } = require('./getScoopDeals');
 const loginAuth = require('../../helpers/loginAuth');
+
+// The home page will load one product from each list just to use the pictures
+
+const getFeedPic = (token, url) => {
+  return new Promise((resolve, reject)=>{
+
+  })
+}
+
 
 // "/scoop/home"
 homePageRouter.get('/', function (req, res, next) {
   console.log('homepagerouter');
+  let objectOfProductPictures = {};
+
   loginAuth().then(token => {
-    getHomePageLists(token.access_token)
-      .then(something => {
-        console.log('SSSSSSSSSSSSSSSSSSSSSSSSSSSSSS', something);
-        res.send(something);
-      })
+    getProductsList(token.access_token, "/api/my/feed?page=1&per_page=2")
+    .then(feedProducts => {
+      console.log('my feed products: ');
+      console.log('my feed products: ', feedProducts.listings[0].id);
+      if(!feedProducts.listings[0].photos[0]._links.small_crop.href){
+        objectOfProductPictures.myFeedPic = feedProducts.listings[1].photos[0]._links.small_crop.href;
+      } else {
+        objectOfProductPictures.myFeedPic = feedProducts.listings[0].photos[0]._links.small_crop.href;
+      }
+      return getProductsList(token.access_token, "/api/wants?page=1&per_page=2");
+    })
+    .then(watchlistProducts => {
+      console.log('my watchlist products: ');
+      console.log('my watchlist products: ', watchlistProducts.listings[0].id);
+      if(!watchlistProducts.listings[0].photos[0]._links.small_crop.href){
+        objectOfProductPictures.myWatchlistPic = watchlistProducts.listings[1].photos[0]._links.small_crop.href;
+      } else {
+        objectOfProductPictures.myWatchlistPic = watchlistProducts.listings[0].photos[0]._links.small_crop.href;
+      }
+      // return promise to get the reverb deals
+      return getProductsList(token.access_token, "/api/handpicked/deals?page=1&per_page=2");
+    })
+    .then(reverbDealsProducts => {
+      console.log('reverb deals products: ');
+      console.log('reverb deals products: ', reverbDealsProducts.listings[0].id);
+      if(!reverbDealsProducts.listings[0].photos[0]._links.small_crop.href){
+        objectOfProductPictures.reverbDealsPic = reverbDealsProducts.listings[1].photos[0]._links.small_crop.href;
+      } else {
+        objectOfProductPictures.reverbDealsPic = reverbDealsProducts.listings[0].photos[0]._links.small_crop.href;
+      }
+      // return promise to get the scoop deals
+      objectOfProductPictures.scoopDealsPic = "https://images.reverb.com/image/upload/s--icqa3i4G--/a_exif,c_thumb,f_auto,fl_progressive,g_south,h_296,q_auto:eco,w_296/v1524431177/npuixhqpuakhfkkhzui5.jpg";
+      res.send(objectOfProductPictures);
+    })
   })
 })
 
