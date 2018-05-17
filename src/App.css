@@ -47,7 +47,7 @@ ul.navbar li{
 }
 
 ul.navbar li a {
-  color: darkorange;
+  color: #f6870f;
   font-size: 2em;
 }
 
@@ -60,9 +60,10 @@ ul.navbar {
 }
 
 .selected{
-  box-shadow: 1,1,1,1;
-  text-shadow: .1em .1em 3px black;
-  /* background-color: darkorange; */
+  /* box-shadow: 1,1,1,1; */
+  /* text-shadow: .1em .1em 1px #414141; */
+  /* background-color: #f6870f; */
+  text-decoration: underline overline;
 }
 
 /****   Page Containers   ****/
@@ -129,8 +130,8 @@ div.ui.card {
 .footer {
   margin-top: 2em;
   /* margin-bottom: 2em; */
-  background-color: darkorange;
-  color: black;
+  background-color: #f6870f;
+  color: #414141;
   min-height: 7vh;
   /* position: absolute;
   bottom: 0; */
@@ -149,8 +150,8 @@ div.ui.card {
 .mainHeader {
   font-size: 15vh;
   /* font-family: 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
-  color: darkorange;
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  color: #f6870f;
+  text-shadow: -1px 0 #414141, 0 1px #414141, 1px 0 #414141, 0 -1px #414141;
   padding-top: .5em;
 }
 
