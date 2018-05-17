@@ -173,10 +173,10 @@ blockquote p {
 /****  HeroPic  ****/
 
 .mainHeader {
-  font-size: 10rem;
+  font-size: 11rem;
   color: #f6870f;
   text-shadow: -1px 0 #414141, 0 1px #414141, 1px 0 #414141, 0 -1px #414141;
-  padding-top: .5em;
+  padding-top: .2em;
   font-family: 'Pattaya', sans-serif;
 }
 

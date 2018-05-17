@@ -9,7 +9,7 @@ class Container extends React.Component {
     this.state = {
       products: [],
       endpoint: props.endpoint,
-      heroPic: props.heroPic,
+      picture: props.picture,
       loading: true,
       pageName: this.props.pageName,
     }
@@ -33,7 +33,7 @@ class Container extends React.Component {
   render() {
     return (
       <div>
-        <HeroPic heroPic={this.state.heroPic} pageName={this.state.pageName}/>
+        <HeroPic picture={this.state.picture} header={this.state.pageName}/>
         <div className="page-container">
           {this.state.loading ? <div className="loading centered"> <h1>Loading {this.state.pageName} <Icon loading name='spinner' /> </h1> </div> :
           <Card.Group>
