@@ -12,7 +12,7 @@ class Home extends React.Component {
     this.state = {
       pics: {},
       endpoint: props.endpoint,
-      heroPic: props.heroPic,
+      picture: props.picture,
       pageName: this.props.pageName,
     }
   }
@@ -35,7 +35,7 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <HeroPic heroPic={this.state.heroPic} pageName={this.state.pageName}/>
+        <HeroPic picture={this.state.picture} header={this.state.pageName}/>
         <Mission />
         {this.state.loading ?
           <div className="homePageContainer">
