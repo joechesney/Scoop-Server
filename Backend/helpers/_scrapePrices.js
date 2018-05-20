@@ -1,6 +1,11 @@
 const request = require('request');
 const cheerio = require('cheerio');
 
+// This file ended up being entirely unused by the app,
+// but I am leaving it in as a piece of the story of
+// how this app began as a web scraper before being
+// converted to using API data
+
 module.exports = (productUrl) => {
   var options = {
     url: `${productUrl}`,
