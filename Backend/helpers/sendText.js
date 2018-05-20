@@ -2,7 +2,6 @@
 module.exports = () => {
   let secrets = require('./secrets');
   let SMSclient = new require('twilio')(secrets.twilioAccountSID, secrets.twilioAuthToken);
-  console.log('HELLO???!!!');
   SMSclient.messages.create({
     body: 'Hello from Scoop!',
     to: "+16154389707",  // Text this number

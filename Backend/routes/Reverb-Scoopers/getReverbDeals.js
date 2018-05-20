@@ -11,7 +11,6 @@ const { loginAuth,
 
 // "/scoop/home"
 reverbDealsRouter.get('/', function (req, res, next) {
-  console.log('reverbDealsRouter');
   loginAuth().then(token => {
     getProductsList(token.access_token, "/api/handpicked/deals")
     .then(dataFromAPI=>{
