@@ -19,7 +19,7 @@ This is my Final Capstone Project for Nashville Software School. It was due May 
 
 ## Using this App
 
-1. In order to use this app, as of 5/4/18, the user must create a real Reverb.com account, apply for an App Permission, which will give you a client ID and aClient Secret. Then you need to save these keys in a file called "secrets.js" will be saved in Backend/helpers.
+1. In order to use this app, as of 5/19/18, the user must create a real Reverb.com account, apply for an App Permission, which will give you a client ID and aClient Secret. Then you need to save these keys in a file called "secrets.js" will be saved in Backend/helpers.
 
 2. First you'll need install all of the node packages, so type `npm install` into the terminal.
 
