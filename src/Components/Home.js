@@ -18,13 +18,9 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    console.log('endpoint:',this.state.endpoint);
     axios.get(this.state.endpoint)
     .then(response => {
-      console.log('SWEET Home DATA', response.data);
       this.setState(prevState => {
-        console.log('prevState',prevState);
-
         return {
           pics: response.data,
         }
