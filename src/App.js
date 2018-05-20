@@ -3,7 +3,7 @@ import './App.css';
 import Container from './Components/Container';
 import Navbar from './Components/Navbar';
 import Home from './Components/Home';
-import Product from './Components/Product';
+// import Product from './Components/Product';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 import one from './images/one.jpg';
 import six from './images/six.jpg';
@@ -32,7 +32,7 @@ class App extends Component {
             <Route path="/myWatchlist" render={()=><Container endpoint={"http://localhost:3333/scoop/myWatchlist"} picture={three} pageName="My Watchlist" />} />
             <Route path="/reverbDeals" render={()=><Container endpoint={"http://localhost:3333/scoop/reverbDeals"} picture={four} pageName="Reverb Deals" />} />
             <Route path="/scoopDeals" render={()=><Container endpoint={"http://localhost:3333/scoop/scoopDeals"} picture={five} pageName="Scoop Deals" />} />
-            <Route path="/product" render={()=><Product endpoint={"http://localhost:3333/scoop/product"} />} />
+            {/* <Route path="/product" render={()=><Product endpoint={"http://localhost:3333/scoop/product"} />} /> */}
           </div>
           <Footer />
         </div>
