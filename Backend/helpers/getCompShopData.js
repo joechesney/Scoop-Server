@@ -18,7 +18,6 @@ module.exports = (access_token, productObj) => {
     request(options, (error, response, html) => {
       if (!error && response) {
         info = JSON.parse(response.body); //THIS WORKS!
-        // console.log('LISTING',listing);
         productObj.compShopData = info;
         productObj = compShopHelper(productObj);
         resolve(productObj);
