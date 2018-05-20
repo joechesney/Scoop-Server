@@ -18,12 +18,10 @@ class Container extends React.Component {
   componentDidMount() {
     axios.get(this.state.endpoint)
     .then(response=>{
-      console.log('SWEET SWEET DATA',response.data);
       this.setState(prevState=> {
         return {
           products: response.data,
           loading: false,
-
         }
       });
     });

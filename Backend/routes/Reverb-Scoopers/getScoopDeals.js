@@ -13,13 +13,11 @@ let pageCounter = 1;
 
 // "/scoop/home"
 scoopDealsRouter.get('/', function (req, res, next) {
-  console.log('scoopDealsRouter');
   const getThoseMugs = (access_token, url) => {
     getProductsList(access_token, url)
       .then(dataFromAPI => {
         let promiseArray1 = [];
-        console.log('pageCounter', pageCounter);
-        console.log('URL: ', url);
+
         productsArray = [];
         for (let i = 0; i < dataFromAPI.listings.length; i++) {
           promiseArray1.push(getSingleProduct(access_token, dataFromAPI.listings[i]._links.self.href));
@@ -53,6 +51,10 @@ scoopDealsRouter.get('/', function (req, res, next) {
         })
       })
   }
+
+  // This function was giving me major issues.
+  // Somehow, these issues were fixed by defining my anonymous function
+  // with a name, and then immediately calling that function
   loginAuth().then(token => {
     getThoseMugs(token.access_token, `/api/my/feed?page=${pageCounter}&per_page=40`);
   })

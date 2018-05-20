@@ -13,7 +13,6 @@ feedRouter.get('/', function (req, res, next) {
         .then(dataFromAPI => {
           let promiseArray1 = [];
           productsArray = [];
-          // console.log('dataFromAPI',dataFromAPI);
           for (let i = 0; i < dataFromAPI.listings.length; i++) {
             promiseArray1.push(getSingleProduct(token.access_token, dataFromAPI.listings[i]._links.self.href));
           }
