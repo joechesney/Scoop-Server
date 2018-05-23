@@ -31,7 +31,9 @@ feedRouter.get('/', function (req, res, next) {
               .then(listingsWithCompShopData => {
 
                 let allListings = listingsWithPriceGuideData.concat(listingsWithCompShopData);
-                res.send(allListings);
+                res.send({
+                  products: allListings,
+                });
               })
           })
         })

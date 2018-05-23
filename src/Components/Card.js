@@ -24,7 +24,7 @@ const ProductCard = props => {
         </Card.Content>
         <Card.Content extra>
           <div>
-            This Price: ${props.card.price.amount} + {shipping} S&H
+            This Price: ${props.card.price.amount} + {shipping}
           </div>
           <div>Avg. Price: ${props.card.SCOOP.avgMarketPrice.toFixed(2)}</div>
         </Card.Content>
@@ -58,7 +58,7 @@ const ProductCard = props => {
           </Card.Content>
           <Card.Content extra>
             <div>
-              This Price: ${props.card.price.amount} + {shipping} S&H
+              This Price: ${props.card.price.amount} + {shipping}
             </div>
             <div>Lowest Available Price: ${props.card.SCOOP.lowestAvailable}</div>
           </Card.Content>
