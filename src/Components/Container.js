@@ -18,9 +18,10 @@ class Container extends React.Component {
   componentDidMount() {
     axios.get(this.state.endpoint)
     .then(response=>{
+      console.log('reponse from api',response);
       this.setState(prevState=> {
         return {
-          products: response.data,
+          products: response.data.products,
           loading: false,
         }
       });

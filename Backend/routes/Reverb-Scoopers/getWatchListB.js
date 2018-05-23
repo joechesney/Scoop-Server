@@ -36,7 +36,9 @@ watchlistRouter.get('/', function (req, res) {
         .then(listingsWithCompShopData=>{
           // sendText();
           let allListings = listingsWithPriceGuideData.concat(listingsWithCompShopData);
-          res.send(allListings);
+          res.send({
+            products: allListings,
+          });
         })
       })
     })

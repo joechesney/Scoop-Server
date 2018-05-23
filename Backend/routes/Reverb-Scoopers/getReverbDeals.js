@@ -34,7 +34,9 @@ reverbDealsRouter.get('/', function (req, res, next) {
         .then(listingsWithCompShopData=>{
           // sendText();
           let allListings = listingsWithPriceGuideData.concat(listingsWithCompShopData);
-          res.send(allListings);
+          res.send({
+            products: allListings,
+          });
         })
       })
     })

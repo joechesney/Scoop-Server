@@ -11,8 +11,10 @@ const { loginAuth,
 var arrayOfScoops = [];
 let pageCounter = 1;
 
-// "/scoop/home"
+// "/scoop/scoopDeals"
 scoopDealsRouter.get('/', function (req, res, next) {
+
+  console.log('req.body: ',req.body);
   const getThoseMugs = (access_token, url) => {
     getProductsList(access_token, url)
       .then(dataFromAPI => {
@@ -41,11 +43,14 @@ scoopDealsRouter.get('/', function (req, res, next) {
               allListings.forEach(listing => {
                 if (listing.SCOOP.isGoodDeal) arrayOfScoops.push(listing);
               })
-              if (arrayOfScoops.length < 10 && allListings.length > 0) {
+              if (arrayOfScoops.length < 20 && allListings.length > 0) {
                 pageCounter++;
                 getThoseMugs(access_token, `/api/my/feed?page=${pageCounter}&per_page=40`)
               } else {
-                res.send(arrayOfScoops);
+                res.send({
+                  products: arrayOfScoops,
+                  pageCounter,
+                });
               }
             })
         })

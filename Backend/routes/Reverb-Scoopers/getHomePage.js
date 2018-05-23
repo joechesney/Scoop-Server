@@ -43,7 +43,9 @@ homePageRouter.get('/', function (req, res, next) {
       }
       // return promise to get the scoop deals
       objectOfProductPictures.scoopDealsPic = "https://images.reverb.com/image/upload/s--icqa3i4G--/a_exif,c_thumb,f_auto,fl_progressive,g_south,h_296,q_auto:eco,w_296/v1524431177/npuixhqpuakhfkkhzui5.jpg";
-      res.send(objectOfProductPictures);
+      res.send(
+        objectOfProductPictures,
+      );
     })
   })
 })
