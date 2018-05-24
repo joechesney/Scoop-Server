@@ -1,4 +1,8 @@
 const watchlistRouter = require('express').Router();
+const ctrl = require('../../controllers/myWatchlistCtrl');
+
+
+// DELETE THIS
 const { loginAuth,
         getProductsList,
         comparisonShopping,
@@ -8,7 +12,19 @@ const { loginAuth,
         sendText, } = require("../../helpers/index.js");
         // DELETE THIS ENTIRE THING ABOVE THIS
 
-const ctrl = require('../../controllers/myWatchlistCtrl');
+
+
+// Example Router:
+/*
+'use strict';
+const homePageRouter = require('express').Router();
+const { addFantasyTeam } = require("../controllers/teamCtrl");
+
+homePageRouter.post("/fantasyTeam", addFantasyTeam);
+
+module.exports = homePageRouter;
+*/
+
 
 // "/mywatchlist"
 watchlistRouter.get('/', function (req, res) {
