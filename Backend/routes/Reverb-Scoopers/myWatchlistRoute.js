@@ -6,6 +6,9 @@ const { loginAuth,
         getCompShopData,
         getSingleProduct,
         sendText, } = require("../../helpers/index.js");
+        // DELETE THIS ENTIRE THING ABOVE THIS
+
+const ctrl = require('../../controllers/myWatchlistCtrl');
 
 // "/mywatchlist"
 watchlistRouter.get('/', function (req, res) {

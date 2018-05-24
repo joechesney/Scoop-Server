@@ -1,16 +1,6 @@
 
-getProductsList = require('./getProductsList');
-getSingleProduct = require('./getSingleProduct');
-loginAuth = require('./loginAuth');
-priceGuideHelper = require('./_priceGuideHelper');
-getCompShopData = require('./getCompShopData');
-sendText = require('./sendText');
-
-module.exports={
-  getProductsList,
-  getSingleProduct,
-  loginAuth,
-  priceGuideHelper,
-  getCompShopData,
-  sendText,
+module.exports = {
+  determineSituation: require('./_determineSituation'),
+  comparisonShopping: require('./_comparisonShopping'),
+  priceGuideHelper: require('./_priceGuideHelper'),
 }

@@ -1,7 +1,7 @@
 
 const request = require('request');
-const determineSituation = require('./_determineSituationHelper');
-
+// This returns just a list of the products on the specified list.
+// The returned obects will not have the _embedded data on them yet
 module.exports = (access_token, urlSuffix) => {
   return new Promise((resolve, reject) => {
 
@@ -17,10 +17,9 @@ module.exports = (access_token, urlSuffix) => {
     }
     request(options, (error, response, html) => {
       if (!error && response) {
-        listing = determineSituation(JSON.parse(response.body));
-        resolve(listing);
+        response.body = JSON.parse(response.body); //THIS WORKS!
+        resolve(response);
       } else {
-        let error = new Error("Something went wrong in getSingleProduct")
         reject(error)
       }
     })

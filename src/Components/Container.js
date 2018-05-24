@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import ProductCard from './Card';
+import ShowMoreButton from './ShowMore';
 import { Card, Icon } from 'semantic-ui-react'
 import HeroPic from './HeroPic'
 class Container extends React.Component {
@@ -12,17 +13,36 @@ class Container extends React.Component {
       picture: props.picture,
       loading: true,
       pageName: this.props.pageName,
+      pageQuery: "",
+      nextPage: "",
     }
+    this.handleShowMore = this.handleShowMore.bind(this);
   }
 
   componentDidMount() {
     axios.get(this.state.endpoint)
     .then(response=>{
-      console.log('reponse from api',response);
+      console.log('response from api',response);
       this.setState(prevState=> {
         return {
           products: response.data.products,
           loading: false,
+          nextPage: response.data.nextPage,
+        }
+      });
+    });
+  }
+
+  handleShowMore() {
+    console.log('this state',this.state);
+    axios.post(this.state.endpoint, {nextPage: this.state.nextPage})
+    .then(response=>{
+      console.log('response from api2',response);
+      this.setState(prevState=> {
+        return {
+          products: prevState.products.concat(response.data.products),
+          loading: false,
+          endpoint: response.data.nextPage,
         }
       });
     });
@@ -48,6 +68,7 @@ class Container extends React.Component {
             }
           </Card.Group>
           }
+          <ShowMoreButton showMore={this.handleShowMore} />
         </div>
       </div>
     )
