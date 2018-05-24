@@ -2,6 +2,8 @@
 getProductsList = require('./getProductsList');
 getSingleProduct = require('./getSingleProduct');
 loginAuth = require('./loginAuth');
+loginAuth = require('./loginAuth');
+getCompShopData = require('./getCompShopData');
 sendText = require('./sendText');
 
 module.exports={
@@ -9,4 +11,5 @@ module.exports={
   getSingleProduct,
   loginAuth,
   sendText,
+  getCompShopData,
 }
