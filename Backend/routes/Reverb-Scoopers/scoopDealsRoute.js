@@ -1,5 +1,10 @@
 
 const scoopDealsRouter = require('express').Router();
+const ctrl = require('../../controllers/homePageCtrl');
+
+
+
+// DELETE THIS
 const { loginAuth,
   getProductsList,
   comparisonShopping,
@@ -7,6 +12,20 @@ const { loginAuth,
   getCompShopData,
   getSingleProduct,
   sendText, } = require("../../helpers/index.js");
+
+
+// Example Router:
+/*
+'use strict';
+const homePageRouter = require('express').Router();
+const { addFantasyTeam } = require("../controllers/teamCtrl");
+
+homePageRouter.post("/fantasyTeam", addFantasyTeam);
+
+module.exports = homePageRouter;
+*/
+
+
 
 var arrayOfScoops = [];
 let pageCounter = 1;

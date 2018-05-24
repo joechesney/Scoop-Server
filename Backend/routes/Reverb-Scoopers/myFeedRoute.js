@@ -1,4 +1,9 @@
 const feedRouter = require('express').Router();
+const ctrl = require('../../controllers/homePageCtrl');
+
+
+
+// DELETE THIS
 const { loginAuth, getProductsList, getSingleProduct } = require("../../models/");
 
 

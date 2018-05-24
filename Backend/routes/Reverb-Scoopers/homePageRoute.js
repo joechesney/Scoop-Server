@@ -1,10 +1,33 @@
 
 const homePageRouter = require('express').Router();
-const getProductsList = require('../../helpers/getProductsList');
-const { getThoseMugs } = require('./getScoopDeals');
-const loginAuth = require('../../helpers/loginAuth');
+const ctrl = require('../../controllers/homePageCtrl');
 
-// The home page will load one product from each list just to use the pictures
+
+
+/**** DELETE BELOW THIS */
+const getProductsList = require('../../models/getProductsList');
+// const { getThoseMugs } = require('./getScoopDeals');
+const loginAuth = require('../../models/loginAuth');
+/**** DELETE ABOVE THIS */
+
+
+
+// Example Router:
+/*
+'use strict';
+const homePageRouter = require('express').Router();
+const { addFantasyTeam } = require("../controllers/teamCtrl");
+
+homePageRouter.post("/fantasyTeam", addFantasyTeam);
+
+module.exports = homePageRouter;
+*/
+
+
+
+
+// The home page will load one product from each list just to
+// use the pictures to display on the cards
 
 const getFeedPic = (token, url) => {
   return new Promise((resolve, reject)=>{
