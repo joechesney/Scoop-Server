@@ -1,15 +1,14 @@
 
-const models = require('../models');
 const { priceGuideHelper } = require("../helpers/");
 const { loginAuth, getSingleProduct, getProductsList, getCompShopData } = require("../models/");
 
 
-const assessMyFeedPrices = (req, res, next) => {
+module.exports.assessMyFeedPrices = (req, res, next) => {
   loginAuth()
   .then(({access_token})=>{
     getProductsList(access_token, `/api/my/feed?page=1&per_page=40`)
     .then(dataFromAPI => {
-      console.log('777777777777777777777777777777777777777777',dataFromAPI.body);
+      // console.log('777777777777777777777777777777777777777777',dataFromAPI.body);
       let promiseArray1 = [];
 
       for (let i = 0; i < dataFromAPI.body.listings.length; i++) {
@@ -41,8 +40,4 @@ const assessMyFeedPrices = (req, res, next) => {
       })
     })
 
-}
-
-module.exports = {
-  assessMyFeedPrices,
 }
