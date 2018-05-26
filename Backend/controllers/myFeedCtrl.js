@@ -8,7 +8,6 @@ module.exports.assessMyFeedPrices = (req, res, next) => {
   .then(({access_token})=>{
     getProductsList(access_token, `/api/my/feed?page=1&per_page=40`)
     .then(dataFromAPI => {
-      // console.log('777777777777777777777777777777777777777777',dataFromAPI.body);
       let promiseArray1 = [];
 
       for (let i = 0; i < dataFromAPI.body.listings.length; i++) {
