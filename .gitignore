@@ -1,5 +1,5 @@
 package-lock.json
-Backend/helpers/secrets.js
+Backend/models/secrets.js
 
 # dependencies
 /node_modules
