@@ -1,16 +1,9 @@
-const watchlistRouter = require('express').Router();
-const { loginAuth,
-        getProductsList,
-        comparisonShopping,
-        priceGuideHelper,
-        getCompShopData,
-        getSingleProduct,
-        sendText, } = require("../../helpers/index.js");
 
-// "/mywatchlist"
-watchlistRouter.get('/', function (req, res) {
-  // call the login function and it will send back the auth token
-  // then send the auth token in the header of the GET request
+const { priceGuideHelper } = require("../helpers/");
+const { loginAuth, getSingleProduct, getProductsList, getCompShopData } = require("../models/");
+
+
+module.exports.assessMyWatchlistPrices = (req, res, next) => {
 
   loginAuth().
   then(token=>{
@@ -18,8 +11,8 @@ watchlistRouter.get('/', function (req, res) {
     .then(dataFromAPI=>{
       let promiseArray1 = [];
       productsArray = [];
-      for(let i = 0; i < dataFromAPI.listings.length; i++){
-        promiseArray1.push(getSingleProduct(token.access_token, dataFromAPI.listings[i]._links.self.href));
+      for(let i = 0; i < dataFromAPI.body.listings.length; i++){
+        promiseArray1.push(getSingleProduct(token.access_token, dataFromAPI.body.listings[i]._links.self.href));
       }
       Promise.all(promiseArray1).then(listings=>{
         let promiseArray2 = [];
@@ -36,13 +29,13 @@ watchlistRouter.get('/', function (req, res) {
         .then(listingsWithCompShopData=>{
           // sendText();
           let allListings = listingsWithPriceGuideData.concat(listingsWithCompShopData);
-          res.send(allListings);
+          res.send({
+            products: allListings,
+          });
         })
       })
     })
   })
   .catch(error=>{if(error){console.log('execution error: ',error);}
   })
-});
-
-exports = module.exports = watchlistRouter;
+}

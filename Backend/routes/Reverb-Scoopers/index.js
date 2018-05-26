@@ -3,10 +3,10 @@
 const { Router } = require('express');
 const indexRouter = Router();
 
-indexRouter.use('/myFeed', require('./getFeedB'));
-indexRouter.use('/myWatchlist', require('./getWatchlistB'));
-indexRouter.use('/homePage', require('./getHomePage'));
-indexRouter.use('/reverbDeals', require('./getReverbDeals'));
-indexRouter.use('/scoopDeals', require('./getScoopDeals'));
+indexRouter.use('/myFeed', require('./myFeedRoute'));
+indexRouter.use('/myWatchlist', require('./myWatchlistRoute'));
+indexRouter.use('/homePage', require('./homePageRoute'));
+indexRouter.use('/reverbDeals', require('./reverbDealsRoute'));
+indexRouter.use('/scoopDeals', require('./scoopDealsRoute'));
 
 module.exports = indexRouter;
