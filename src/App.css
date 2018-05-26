@@ -207,3 +207,9 @@ blockquote p {
 .loading {
   height: 500px;
 }
+
+/****    Show More Button    ****/
+
+.showMoreButton {
+  margin-top: 2em;
+}
