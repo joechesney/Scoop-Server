@@ -62,6 +62,7 @@ class Container extends React.Component {
                   <span key={product.id}>
                     <ProductCard
                       card={product}
+                      key={product.id}
                       />
                   </span>
                 )
