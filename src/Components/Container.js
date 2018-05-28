@@ -68,7 +68,7 @@ class Container extends React.Component {
             }
           </Card.Group>
           }
-          <ShowMoreButton showMore={this.handleShowMore} />
+          <ShowMoreButton showMoreProducts={this.handleShowMore} />
         </div>
       </div>
     )

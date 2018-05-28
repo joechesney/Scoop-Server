@@ -1,10 +1,11 @@
 
 const reverbDealsRouter = require('express').Router();
-const { assessReverbDeals } = require('../../controllers/reverbDealsCtrl');
+const { assessReverbDeals, showMoreProducts } = require('../../controllers/reverbDealsCtrl');
 
 
 
 // "/scoop/home"
 reverbDealsRouter.get('/', assessReverbDeals );
+reverbDealsRouter.post('/', showMoreProducts );
 
 exports = module.exports = reverbDealsRouter;
