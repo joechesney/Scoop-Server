@@ -2,6 +2,7 @@
 const { priceGuideHelper } = require("../helpers/");
 const { loginAuth, getSingleProduct, getProductsList, getCompShopData } = require("../models/");
 
+
 module.exports.assessScoopDeals = (req, res, next) => {
   var arrayOfScoops = [];
   let pageCounter = 1;

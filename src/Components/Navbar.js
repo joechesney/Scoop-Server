@@ -20,7 +20,7 @@ const Navbar = () => {
         </NavLink></li>
         {
           pages.map(page=>(
-            <li><NavLink
+            <li key={page.displayName}><NavLink
               activeClassName="selected"
               key={page.displayName}
               to={page.path}>
