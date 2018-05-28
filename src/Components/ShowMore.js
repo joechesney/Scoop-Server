@@ -4,7 +4,7 @@ import React from 'react';
 const ShowMoreButton = props => {
 
   return (
-    <button className="showMoreButton"  onClick={props.showMore}>Show More</button>
+    <button className="showMoreButton"  onClick={props.showMoreProducts}>Show More</button>
   )
 }
 
