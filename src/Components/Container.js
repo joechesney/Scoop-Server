@@ -40,9 +40,10 @@ class Container extends React.Component {
       console.log('response from api2',response);
       this.setState(prevState=> {
         return {
+          ...prevState,
           products: prevState.products.concat(response.data.products),
           loading: false,
-          endpoint: response.data.nextPage,
+          nextPage: response.data.nextPage,
         }
       });
     });
