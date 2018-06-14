@@ -11,7 +11,11 @@ app.use(bodyParser.json());
 
 const routes = require('./Backend/routes/index');
 app.use(express.static(path.join(__dirname, 'client/build')));
-app.use('/', routes);
+app.use('/backend/', routes);
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname+'/client/build/index.html'));
+});
 
 app.use((err, req, res, next ) => {
   err = err || new Error("Internal Server Error");
@@ -19,6 +23,6 @@ app.use((err, req, res, next ) => {
   res.json({ error: err.message });
 });
 const port = process.env.PORT || 8080;
-app.listen(port, ()=>console.log('Listening on proces.env.port or 8080'));
+app.listen(port);
 
 exports = module.exports = app;
