@@ -5,7 +5,12 @@
   "main": "app.js",
   "private": true,
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
+  },
+  "engines": {
+    "node": "8.9.1",
+    "npm": "5.8.0"
   },
   "repository": {
     "type": "git",
