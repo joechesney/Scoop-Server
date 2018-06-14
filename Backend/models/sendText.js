@@ -1,6 +1,6 @@
 
+let secrets = require('./secrets');
 module.exports = () => {
-  let secrets = require('./secrets');
   let SMSclient = new require('twilio')(secrets.twilioAccountSID, secrets.twilioAuthToken);
   SMSclient.messages.create({
     body: 'Hello from Scoop!',
