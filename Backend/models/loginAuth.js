@@ -16,7 +16,7 @@ const secrets = require('./secrets');
 
 module.exports = () =>{
   return new Promise((resolve, reject)=>{
-    let dataString = `grant_type=client_credentials&client_id=${secrets().reverbClientId}&client_secret=${secrets().reverbClientSecret}&scope=public+read_listings+read_orders+read_lists+write_lists+read_profile+write_profile`;
+    let dataString = `grant_type=client_credentials&client_id=${secrets.reverbClientId}&client_secret=${secrets.reverbClientSecret}&scope=public+read_listings+read_orders+read_lists+write_lists+read_profile+write_profile`;
 
     let options = {
         url: 'https://reverb.com/oauth/token',
