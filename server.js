@@ -10,11 +10,10 @@ require('dotenv').config();
 app.use(bodyParser.json());
 
 const routes = require('./Backend/routes/index');
-app.use(express.static(path.join(__dirname, 'client/build')));
 app.use('/backend/', routes);
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+'/client/build/index.html'));
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname+'/index.html'));
 });
 
 app.use((err, req, res, next ) => {
