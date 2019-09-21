@@ -16,5 +16,3 @@ yarn-debug.log*
 yarn-error.log*
 
 Backend/models/secrets.js
-Backend/models/defsecrets.js
-Backend/models/defchups.js

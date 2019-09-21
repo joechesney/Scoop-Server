@@ -3,6 +3,13 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
+const jobs = require('./Backend/jobs');
+// const cron = require('cron');
+const cron = require('node-cron');
+
+cron.schedule("* * 1 * * *", async() => await jobs());
+// cron.schedule("* * 12 * * *", async() => await jobs());
+
 app.use(cors());
 
 require('dotenv').config();
@@ -10,7 +17,7 @@ require('dotenv').config();
 app.use(bodyParser.json());
 
 const routes = require('./Backend/routes/index');
-app.use('/backend/', routes);
+app.use('/backend', routes);
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname+'/index.html'));
@@ -22,6 +29,6 @@ app.use((err, req, res, next ) => {
   res.json({ error: err.message });
 });
 const port = process.env.PORT || 8080;
-app.listen(port);
+app.listen(port, () => console.log(`listening on port ${port}`));
 
 exports = module.exports = app;
