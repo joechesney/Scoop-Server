@@ -13,9 +13,9 @@ const request = require('request');
 // file that I am using here right now
 
 module.exports = () => {
-  const secrets = require('./secrets');
-  const clientId = process.env.REVERB_CLIENT_ID || secrets.reverbClientId;
-  const clientSecret = process.env.REVERB_CLIENT_SECRET || secrets.reverbClientSecret;
+  // const { reverbClientId, reverbClientSecret } = require('./secrets');
+  const clientId = process.env.REVERB_CLIENT_ID;
+  const clientSecret = process.env.REVERB_CLIENT_SECRET;
   return new Promise((resolve, reject)=>{
     let dataString = `grant_type=client_credentials&client_id=${clientId}&client_secret=${clientSecret}&scope=public+read_listings+read_orders+read_lists+write_lists+read_profile+write_profile`;
 

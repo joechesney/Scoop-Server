@@ -1,4 +1,4 @@
-const secrets = require('./secrets');
+// const { personalEmailAddress, personalEmailAddressKey } = require('./secrets');
 const nodemailer = require('nodemailer');
 
 module.exports = async ({ listings }) => {
@@ -10,8 +10,8 @@ module.exports = async ({ listings }) => {
       <br>
     </p>
   `));
-  const email = process.env.EMAIL_DESTINATION || secrets.personalEmailAddress;
-  const key = process.env.EMAIL_KEY ||  secrets.personalEmailAddressKey;
+  const email = process.env.EMAIL_DESTINATION;
+  const key = process.env.EMAIL_KEY;
 
   const transporter = nodemailer.createTransport({
     service: 'gmail',
