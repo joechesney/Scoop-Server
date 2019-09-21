@@ -7,7 +7,7 @@ const jobs = require('./Backend/jobs');
 // const cron = require('cron');
 const cron = require('node-cron');
 
-cron.schedule("* * 1 * * *", async() => await jobs());
+cron.schedule("* 10 * * * *", async() => await jobs());
 // cron.schedule("* * 12 * * *", async() => await jobs());
 
 app.use(cors());

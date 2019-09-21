@@ -6,10 +6,15 @@ const {
 } = require("./models/");
 
 module.exports = async() => {
-  loginAuth()
-  .then(async({ access_token }) => {
-    const hypeListings = await hyperionService(access_token);
-    await sendEmail({listings: hypeListings.body.listings});
-
-  })
+  try {
+    loginAuth()
+    .then(async({ access_token }) => {
+      console.log('email sent at ', Date.now().toLocaleString());
+      const hypeListings = await hyperionService(access_token);
+      await sendEmail({listings: hypeListings.body.listings});
+  
+    })
+  } catch(err) {
+    console.log('err : ', err);
+  }
 };
