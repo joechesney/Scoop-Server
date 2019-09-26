@@ -28,13 +28,16 @@ module.exports = async ({ listings }) => {
       ${listingsHTML}
     `
   };
-  transporter.sendMail(mailOptions, function (err, info) {
-    if (err) {
-      console.log('err : ', err);
-      return(err);
-    }
-    else return (info);
-  });
+  try {
+    transporter.sendMail(mailOptions, function (error, info) {
+      if(error) throw(error)
+      return (info);
+    });
+
+  } catch(error) {
+    console.log('err in sendEmail: ', err);
+    return (error)
+  }
 
 }
 

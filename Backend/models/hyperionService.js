@@ -1,9 +1,9 @@
 
 const request = require('request');
 
-module.exports = (access_token) => {
-  return new Promise((resolve, reject) => {
-
+module.exports = async (access_token) => {
+  try {
+  
     let options = {
       url: `https://reverb.com/api/listings?query=hyperion&page=1&per_page=40`,
       headers: {
@@ -14,14 +14,15 @@ module.exports = (access_token) => {
       "Accept": "application/hal+json",
       "Accept-Version": "3.0",
     }
-    request(options, (error, response, html) => {
-      if (!error && response) {
-        response.body = JSON.parse(response.body); //THIS WORKS!
+    return await request(options, (error, response, html) => {
+        if(error) throw(error)
+        // response.body = JSON.parse(response.body); //THIS WORKS!
         // console.log('response : ', response);
-        resolve (response);
-      } else {
-        reject (error)
+        return JSON.parse(response.body)
       }
-    })
-  })
+    );
+  } catch(err) {
+    console.log('err in hyperionService: ', err);
+    return err
+  }
 }

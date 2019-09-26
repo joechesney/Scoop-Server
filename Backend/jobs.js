@@ -8,13 +8,15 @@ const {
 module.exports = async() => {
   try {
     loginAuth()
-    .then(async({ access_token }) => {
-      console.log('email sent at ', Date.now().toLocaleString());
-      const hypeListings = await hyperionService(access_token);
-      await sendEmail({listings: hypeListings.body.listings});
-  
+    .then(async(res) => {
+      console.log('res : ', res);
+      const { access_token } = res;
+      const { listings } = await hyperionService(access_token);
+      console.log('listings : ', listings);
+      return await sendEmail({ listings });
     })
   } catch(err) {
-    console.log('err : ', err);
+    console.log('err in jobs: ', err);
+    return err;
   }
 };
