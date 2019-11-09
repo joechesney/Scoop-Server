@@ -18,7 +18,6 @@ module.exports = (productUrl) => {
     if (!error) {
 
       const $ = cheerio.load(html);
-      // console.log('html: ',html);
 
       $('.heading-1').filter(function(){
         var data = $(this);

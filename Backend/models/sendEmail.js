@@ -1,15 +1,44 @@
 // const { personalEmailAddress, personalEmailAddressKey } = require('./secrets');
 const nodemailer = require('nodemailer');
 
-module.exports = async ({ listings }) => {
-  const listingsHTML = listings.map((listing) => (`
+module.exports = async (listings) => {
+  console.log('IN THE EMAIL FUNCITON : ');
+  const shits = [
+    'balaguer',
+    'devi',
+    'wes audio',
+    'wesaudio',
+    'stagg'
+  ];
+
+  const onlyHyperions = listings.filter(listing => {
+    let count = 0;
+    const dems = shits.map(shit => {
+      if (listing.title.toLowerCase().indexOf(shit) !== -1){
+        count++;
+      }
+    });
+    if (count === 0) {
+      return listing;
+    }
+  });
+
+  const noGuitars = onlyHyperions.filter(listing => {
+    if (listing.price.amount_cents < 50000) return listing;
+  })
+
+  const listingsHTML = noGuitars.map((listing) => {
+    return (`
     <p>
       <br>
-      <img src="${listing.photos[0]._links.thumbnail}">
+      <img src="${listing.photos[0]._links.thumbnail.href}" />
       <a href=${listing._links.web.href} target="_blank">${listing.title} ${listing.price.display}</a>
       <br>
     </p>
-  `));
+  `)});
+  // const secrets = require('./secrets');
+  // const email = secrets.personalEmailAddress;
+  // const key = secrets.personalEmailAddressKey;
   const email = process.env.EMAIL_DESTINATION;
   const key = process.env.EMAIL_KEY;
 

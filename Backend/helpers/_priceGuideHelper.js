@@ -37,7 +37,7 @@ module.exports = (productObj) => {
     return productObj;
 
   } else {
-    console.log('no embedded price guide info inside _priceGuideHelper: ', productObj.model);
+    // console.log('no embedded price guide info inside _priceGuideHelper: ', productObj.model);
     return new Error("no embedded price guide info inside _priceGuideHelper");
   }
 }

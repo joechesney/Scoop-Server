@@ -10,9 +10,9 @@ module.exports.queryForProductCtrl = (req, res, next) => {
   .then(async({ access_token }) => {
     // 1. get the listings
     const hypeListings = await hyperionService(access_token);
-    const ids = hypeListings.body.listings.map((listing) => listing.id);
+    const ids = hypeListings.listings.map((listing) => listing.id);
     
-    res.send(hypeListings)
+    res.send(ids)
   })
   .catch(err => next(err))
 }

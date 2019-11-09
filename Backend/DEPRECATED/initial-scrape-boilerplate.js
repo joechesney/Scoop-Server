@@ -91,12 +91,9 @@ app.get('/scrape', function (req, res) {
   try {
   request(options, function (error, response, html) {
     console.log('error: ',error);
-    console.log('html: ',html);
     if (!error) {
 
       const $ = cheerio.load(html);
-      // console.log('html:',html);
-      let name, averageLow, averageHigh;
       // Finally, we'll define the variables we're going to capture
       let product = { name: "", averageLow: "", averageHigh: "" };
 

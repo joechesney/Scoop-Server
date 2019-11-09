@@ -6,16 +6,17 @@ const path = require('path');
 const jobs = require('./Backend/jobs');
 const cron = require('node-cron');
 
-cron.schedule("* * * * *", async() => {
+// cron.schedule("59 * * * * *", async() => {
+cron.schedule("* * 12 * * *", async() => {
   try {
     const job = await jobs();
-    console.log('job : ', job);
+    // console.log('job : ', job);
     console.log('email sent at ', new Date().toLocaleString());
   } catch(err) {
     console.log('err server.js: ', err);
   }
 });
-// cron.schedule("* * 12 * * *", async() => await jobs());
+// cron.schedule("* * * * * *", () => console.log("cron ran every second"));
 
 app.use(cors());
 

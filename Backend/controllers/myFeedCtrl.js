@@ -29,7 +29,6 @@ module.exports.assessMyFeedPrices = (req, res, next) => {
         .then(listingsWithCompShopData => {
 
           let allListings = listingsWithPriceGuideData.concat(listingsWithCompShopData);
-          // console.log('allListings', allListings);
           res.send({
             products: allListings,
             nextPage: dataFromAPI.body._links.next.href,
