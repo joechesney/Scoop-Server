@@ -1,12 +1,10 @@
 
 const request = require('request');
-const { determineSituation } = require('../helpers');
 
-module.exports = (access_token, urlSuffix) => {
-  return new Promise((resolve, reject) => {
-
+module.exports.hyperionService = async (access_token) => {
+  return new Promise(function (resolve, reject) {
     let options = {
-      url: `https://reverb.com${urlSuffix}`,
+      url: `https://reverb.com/api/listings?query=hyperion&page=1&per_page=40`,
       headers: {
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36',
         'Authorization': `Bearer ${access_token}`
@@ -16,13 +14,11 @@ module.exports = (access_token, urlSuffix) => {
       "Accept-Version": "3.0",
     }
     request(options, (error, response, html) => {
-      if (!error && response) {
-        listing = determineSituation(JSON.parse(response.body));
-        resolve(listing);
-      } else {
-        let error = new Error("Something went wrong in getSingleProduct")
-        reject(error)
+      if(error) { reject(error) }
+      if (response) {
+        resolve(JSON.parse(response.body))
       }
-    })
+    });
   })
+
 }

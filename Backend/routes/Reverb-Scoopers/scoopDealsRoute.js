@@ -1,8 +1,8 @@
 
 const scoopDealsRouter = require('express').Router();
-const { assessScoopDeals } = require('../../controllers/scoopDealsCtrl');
+const { scoopDealsCtrl } = require('../../controllers/scoopDealsCtrl');
 
 // "/scoop/scoopDeals"
-scoopDealsRouter.get('/', assessScoopDeals);
+scoopDealsRouter.get('/', scoopDealsCtrl);
 
 exports = module.exports = scoopDealsRouter;

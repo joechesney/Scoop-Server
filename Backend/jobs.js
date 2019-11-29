@@ -3,15 +3,19 @@ const {
   hyperionService,
   sendEmail,
   loginAuth
-} = require("./models/");
+} = require("./services/");
 
-module.exports = async() => {
+const { assessScoopDeals } = require('./services/assessScoopDeals');
+
+
+module.exports.jobs = async() => {
   try {
     loginAuth()
-    .then(async(res) => {
-      const { body: { access_token } } = res;
-      const  { listings } = await hyperionService(access_token);
-      return await sendEmail(listings);
+    .then(async(token) => {
+      const scoopDeals = assessScoopDeals();
+      const  { listings } = await hyperionService(token);
+      const allDeals = scoopDeals.concat(listings);
+      return await sendEmail(allDeals);
     })
   } catch(err) {
     console.log('err in jobs: ', err);

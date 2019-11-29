@@ -1,8 +1,7 @@
 // const { personalEmailAddress, personalEmailAddressKey } = require('./secrets');
 const nodemailer = require('nodemailer');
 
-module.exports = async (listings) => {
-  console.log('IN THE EMAIL FUNCITON : ');
+module.exports.sendEmail = async (listings) => {
   const shits = [
     'balaguer',
     'devi',

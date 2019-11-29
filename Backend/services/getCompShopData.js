@@ -1,8 +1,8 @@
 
 const request = require('request');
-const comparisonShopping = require('../helpers/_comparisonShopping');
+const comparisonShopping = require('../utils/_comparisonShopping');
 
-module.exports = (access_token, productObj) => {
+module.exports.getCompShopData = (access_token, productObj) => {
   return new Promise((resolve, reject) => {
 
     let options = {
@@ -22,7 +22,7 @@ module.exports = (access_token, productObj) => {
         productObj = comparisonShopping(productObj);
         resolve(productObj);
       } else {
-        let error = new Error("Something went wrong in getSingleProduct")
+        let error = new Error("Something went wrong in getCompShopData")
         reject(error)
       }
     })

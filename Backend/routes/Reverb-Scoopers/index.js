@@ -3,6 +3,7 @@
 const { Router } = require('express');
 const indexRouter = Router();
 
+// /api/v1
 indexRouter.use('/myFeed', require('./myFeedRoute'));
 indexRouter.use('/myWatchlist', require('./myWatchlistRoute'));
 indexRouter.use('/homePage', require('./homePageRoute'));

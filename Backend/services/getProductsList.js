@@ -2,9 +2,8 @@
 const request = require('request');
 // This returns just a list of the products on the specified list.
 // The returned obects will not have the _embedded data on them yet
-module.exports = (access_token, urlSuffix) => {
+module.exports.getProductsList = (access_token, urlSuffix) => {
   return new Promise((resolve, reject) => {
-
     let options = {
       url: `https://reverb.com${urlSuffix}`,
       headers: {
@@ -20,6 +19,7 @@ module.exports = (access_token, urlSuffix) => {
         response.body = JSON.parse(response.body); //THIS WORKS!
         resolve(response);
       } else {
+        console.log('error : ', error);
         reject(error)
       }
     })

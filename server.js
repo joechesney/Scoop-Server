@@ -3,14 +3,13 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
-const jobs = require('./Backend/jobs');
+const { jobs } = require('./Backend/jobs');
 const cron = require('node-cron');
 
-// cron.schedule("59 * * * * *", async() => {
-cron.schedule("* * 12 * * *", async() => {
+cron.schedule("59 * * * * *", async() => { // testing
+// cron.schedule("* * 12 * * *", async() => {
   try {
     const job = await jobs();
-    // console.log('job : ', job);
     console.log('email sent at ', new Date().toLocaleString());
   } catch(err) {
     console.log('err server.js: ', err);
@@ -25,7 +24,7 @@ require('dotenv').config();
 app.use(bodyParser.json());
 
 const routes = require('./Backend/routes/index');
-app.use('/backend', routes);
+app.use('/api', routes);
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname+'/index.html'));
