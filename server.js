@@ -6,8 +6,8 @@ const path = require('path');
 const { jobs } = require('./Backend/jobs');
 const cron = require('node-cron');
 
-cron.schedule("59 * * * * *", async() => { // testing
-// cron.schedule("* * 12 * * *", async() => {
+// cron.schedule("59 * * * * *", async() => { // testing
+cron.schedule("* * 11 * * *", async() => {
   try {
     const job = await jobs();
     console.log('email sent at ', new Date().toLocaleString());
