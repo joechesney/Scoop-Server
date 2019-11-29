@@ -7,14 +7,13 @@ const {
 
 const { assessScoopDeals } = require('./services/assessScoopDeals');
 
-
 module.exports.jobs = async() => {
   try {
     loginAuth()
     .then(async(token) => {
-      const scoopDeals = assessScoopDeals();
+      const { products } = await assessScoopDeals(token, `/api/my/feed?page=1&per_page=40`);
       const  { listings } = await hyperionService(token);
-      const allDeals = scoopDeals.concat(listings);
+      const allDeals = products.concat(listings);
       return await sendEmail(allDeals);
     })
   } catch(err) {
